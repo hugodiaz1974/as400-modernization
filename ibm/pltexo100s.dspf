@@ -1,0 +1,185 @@
+     A*%%TS  SD  20180209  085012  HDR         REL-V6R1M0  5761-WDS
+     A*%%EC
+     A                                      DSPSIZ(27 132 *DS3)
+     A                                      INDARA
+     A          R HEADER
+     A*%%TS  SD  20140702  074203  HDR         REL-V6R1M0  5761-WDS
+     A                                      PUTOVR
+     A                                      OVRDTA
+     A                                      OVRATR
+     A                                  2  2USER
+     A                                      DSPATR(HI)
+     A                                      COLOR(WHT)
+     A            NOMEMP        30A  O  1 26DSPATR(HI)
+     A            FECSIS         8Y 0O  1 71DSPATR(HI)
+     A                                      EDTWRD('    /  /  ')
+     A            FECPRO         8Y 0O  2 71DSPATR(HI)
+     A                                      EDTWRD('    /  /  ')
+     A                                  2 15'Parametrizar Exoneracion de Transa-
+     A                                      cciones General'
+     A                                      COLOR(WHT)
+     A                                  1  2'PLTEXO100'
+     A                                      COLOR(WHT)
+     A          R RSFL                      SFL
+     A*%%TS  SD  20180209  085012  HDR         REL-V6R1M0  5761-WDS
+     A            OPCION         1Y 0B 11  2EDTCDE(Z)
+     A  01N02                               DSPATR(PR)
+     A N01N02                               DSPATR(UL)
+     A  51                                  DSPATR(RI)
+     A  02                                  DSPATR(PC)
+     A  02                                  COLOR(GRN)
+     A N01N02                               COLOR(BLU)
+     A            BINEXO         6Y 0O 11  4EDTCDE(Z)
+     A            NUMINT        17A  H
+     A            CODMON         3A  H
+     A            CODSIS         3A  H
+     A            DESTIP        16A  O 11 32
+     A            DESBIN        16A  O 11 11
+     A            TIPCAJ         2Y 0O 11 29EDTCDE(Z)
+     A            TIPCLI         2Y 0O 11 50EDTCDE(Z)
+     A            DESCLI        16A  O 11 53
+     A            CANEXO         3Y 0O 11119EDTCDE(Z)
+     A            CODCON        10A  O 11 71
+     A            CODPRO         3Y 0O 11 83EDTCDE(Z)
+     A            NOMPRO        30A  O 11 87
+     A          R RSFLCTL                   SFLCTL(RSFL)
+     A*%%TS  SD  20160502  174743  HDR         REL-V6R1M0  5761-WDS
+     A                                      SFLSIZ(0200)
+     A                                      SFLPAG(0011)
+     A                                      CA03
+     A                                      CF04
+     A                                      CF05
+     A                                      CF06
+     A                                      KEEP
+     A                                      RTNCSRLOC(&RCD &FLD &POS)
+     A                                      OVERLAY
+     A                                      PUTOVR
+     A                                      OVRDTA
+     A                                      OVRATR
+     A                                      PRINT
+     A                                      SFLCSRRRN(&RELRCD)
+     A  03                                  SFLDSP
+     A  02                                  SFLDSPCTL
+     A  01                                  SFLINZ
+     A  04                                  SFLCLR
+     A  05                                  SFLEND(*MORE)
+     A            SFLRRN         4S 0H      SFLRCDNBR(CURSOR)
+     A            RELRCD         5S 0H
+     A            FLD           10A  H
+     A            RCD           10A  H
+     A            POS            4S 0H
+     A                                 10  1'Op    Bin Exoneracion          Tip-
+     A                                      o de Cajero       Tipo Cliente     -
+     A                                       Convenio  '
+     A                                      DSPATR(HI)
+     A                                      COLOR(WHT)
+     A                                  6  2'Teclee opciones, pulse Intro.'
+     A                                      COLOR(BLU)
+     A                                  7  2'2=Modificar 4=Suprimir 5=Consultar'
+     A                                      COLOR(BLU)
+     A                                 10119'Ctd'
+     A                                      COLOR(WHT)
+     A                                 10 83'    Tipo de Producto              '
+     A                                      COLOR(WHT)
+     A          R FOOTER
+     A*%%TS  SD  20020514  160657  FVC         REL-V4R2M0  5769-PW1
+     A                                      OVERLAY
+     A                                      PUTOVR
+     A                                      OVRDTA
+     A                                      OVRATR
+     A            FTECFUN       78A  O 23  2COLOR(BLU)
+     A            FMENSAJE      75A  O 24  2DSPATR(HI)
+     A          R PANTALLA01
+     A*%%TS  SD  20180209  085012  HDR         REL-V6R1M0  5761-WDS
+     A                                      WINDOW(2 2 12 80)
+     A                                      CA03
+     A                                      CF04
+     A                                      CA12
+     A                                      KEEP
+     A                                      RTNCSRLOC(&RCD &FLD &POS)
+     A                                      OVERLAY
+     A                                      PUTOVR
+     A                                      OVRDTA
+     A                                      OVRATR
+     A                                      PRINT
+     A                                      WDWBORDER((*COLOR BLU) (*DSPATR RI)-
+     A                                       (*CHAR '        '))
+     A            FLD           10A  H
+     A            RCD           10A  H
+     A            POS            4S 0H
+     A            TITULO        40A  O  1 16DSPATR(HI)
+     A                                  8  2'Cantidad de Transacciones a Exoner-
+     A                                      ar:'
+     A            MENSAJE       79A  O 10  2COLOR(BLU)
+     A            TIPCLI         2Y 0B  5 48EDTCDE(Z)
+     A  06                                  DSPATR(RI)
+     A N02N06                               DSPATR(UL)
+     A  06                                  DSPATR(PC)
+     A  02N06                               DSPATR(PR)
+     A                                      DSPATR(HI)
+     A  06                                  COLOR(GRN)
+     A N02N06                               COLOR(BLU)
+     A                                  4  2'Tipo de Cajero                    -
+     A                                        :'
+     A            TIPCAJ         2Y 0B  4 48EDTCDE(Z)
+     A  05                                  DSPATR(RI)
+     A N02N05                               DSPATR(UL)
+     A  05                                  DSPATR(PC)
+     A  02N05                               DSPATR(PR)
+     A                                      DSPATR(HI)
+     A  05                                  COLOR(GRN)
+     A N02N05                               COLOR(BLU)
+     A            DESCAJ        30A  O  4 51COLOR(WHT)
+     A                                  3  2'Bin a Exonerar                    -
+     A                                        :'
+     A                                  5  2'Tipo de Cliente                   -
+     A                                        :'
+     A            CANEXO         3Y 0B  8 47EDTCDE(Z)
+     A  07                                  DSPATR(RI)
+     A N02N07                               DSPATR(UL)
+     A  07                                  DSPATR(PC)
+     A  02N07                               DSPATR(PR)
+     A                                      DSPATR(HI)
+     A  07                                  COLOR(GRN)
+     A N02N07                               COLOR(BLU)
+     A            BINEXO         6Y 0B  3 44EDTCDE(Z)
+     A  04                                  DSPATR(RI)
+     A N02N04                               DSPATR(UL)
+     A  04                                  DSPATR(PC)
+     A  02N04                               DSPATR(PR)
+     A                                      DSPATR(HI)
+     A  04                                  COLOR(GRN)
+     A N02N04                               COLOR(BLU)
+     A            DESBIN        30A  O  3 51COLOR(WHT)
+     A            DESCLI        30A  O  5 51COLOR(WHT)
+     A            TECFUN        79A  O 11  2COLOR(BLU)
+     A                                  6  2'Tipo de Convenio                  -
+     A                                        :'
+     A            CODCON        10A  B  6 40
+     A  06                                  DSPATR(RI)
+     A N02N06                               DSPATR(UL)
+     A  06                                  DSPATR(PC)
+     A  02N06                               DSPATR(PR)
+     A                                      DSPATR(HI)
+     A  06                                  COLOR(GRN)
+     A N02N06                               COLOR(BLU)
+     A                                  9  2'-----------------------------------
+     A                                      ------------------------------------
+     A                                      ----------'
+     A                                      COLOR(RED)
+     A                                  7  2'Tipo de Producto                  -
+     A                                        :'
+     A            CODPRO         3Y 0B  7 47EDTCDE(Z)
+     A  08                                  DSPATR(RI)
+     A N02N08                               DSPATR(UL)
+     A  08                                  DSPATR(PC)
+     A  02N08                               DSPATR(PR)
+     A                                      DSPATR(HI)
+     A  08                                  COLOR(GRN)
+     A N02N08                               COLOR(BLU)
+     A            NOMPRO        30A  O  7 51COLOR(WHT)
+     A          R PANTALLA03
+     A*%%TS  SD  20120925  174849  SJM         REL-V5R3M0  5722-WDS
+     A                                      OVERLAY
+     A                                 12  4'(No existen Exoneraciones para Con-
+     A                                      sultar)'

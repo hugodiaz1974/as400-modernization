@@ -1,0 +1,66 @@
+# ══════════════════════════════════════════════════════════════
+# Docker Compose - Sistema Migrado de Tarjeta de Crédito
+# ══════════════════════════════════════════════════════════════
+# Este archivo levanta los 3 componentes del sistema:
+#   1. Base de Datos PostgreSQL  (reemplazo de DB2 en el AS/400)
+#   2. Backend Node.js APIs      (reemplazo de programas COBOL/RPG)
+#   3. Frontend React + Nginx    (reemplazo de pantallas 5250)
+#
+# Comando para arrancar: docker compose up -d
+# Comando para apagar:   docker compose down
+# ══════════════════════════════════════════════════════════════
+
+services:
+
+  # ── SERVICIO 1: Base de Datos ──────────────────────────────
+  # Equivalente a: La partición de DB2 en el IBM i
+  database:
+    image: postgres:15-alpine
+    container_name: migracion-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: tarjeta_credito
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: secreto123
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+      - ./backend/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d tarjeta_credito"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # ── SERVICIO 2: Backend (APIs REST) ────────────────────────
+  # Equivalente a: Los programas COBOL/RPG compilados (*PGM)
+  backend:
+    build: ./backend
+    container_name: migracion-backend
+    restart: unless-stopped
+    ports:
+      - "3001:3001"
+    environment:
+      DATABASE_URL: postgres://admin:secreto123@database:5432/tarjeta_credito
+      PORT: 3001
+    depends_on:
+      database:
+        condition: service_healthy
+
+  # ── SERVICIO 3: Frontend (Interfaz Web) ────────────────────
+  # Equivalente a: Las pantallas DSPF del AS/400
+  frontend:
+    build: ./frontend
+    container_name: migracion-frontend
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+# ── Volumen persistente para la base de datos ────────────────
+# Equivalente al almacenamiento en disco del AS/400 (DASD)
+# Los datos NO se pierden al apagar los contenedores
+volumes:
+  db_data:

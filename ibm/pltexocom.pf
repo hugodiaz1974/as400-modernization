@@ -1,0 +1,38 @@
+     /*-----------------------------------------------------------------------*/
+     /* Material Bajo Licencia de Taylor & Johnson                            */
+     /* Copyright : TAYLOR & JOHNSON ® 1996, 1997, 1998, 1999, 2000, 2001,    */
+     /*                                2002, 2003, 2004, 2005                 */
+     /*             Todos los Derechos Reservados                             */
+     /*-----------------------------------------------------------------------*/
+     /* Derechos Restringidos para los usuarios, el uso, la duplicacion o     */
+     /* publicacion quedan sujetos al contrato con  TAYLOR & JOHNSON ®        */
+     /*-----------------------------------------------------------------------*/
+     A                                      UNIQUE
+     A          R REGEXOCOM
+     /*-----------------------------------------------------------------------*/
+     A            BINEXO         6S         TEXT('Bin a Exonerar      ')
+     A*                                     462896 Tarjeta Debito
+     A*                                     482407 Tarjeta Electron
+     A            TIPCAJ         2S         TEXT('Tipo de Cajero      ')
+     A*                                     1 Corporativos
+     A*                                     2 Servibanca
+     A*                                     3 Otras Redes
+     A            TIPCLI         2S         TEXT('Tipo Cliente        ')
+     A*                                     1 Empleado
+     A*                                     2 Asociado
+     A*                                     3 Cliente
+     A*                                     4 Convenio
+     A            CODCON        10A         TEXT('Codigo Convenio     ')
+     A            CODPRO         3S         TEXT('Codigo Producto     ')
+     A            CANEXO         3S         TEXT('Cant a Exonerar     ')
+     A            USRING        10A         TEXT('Usuario Ingresa     ')
+     A            HORING         8S         TEXT('Hora Ingreso        ')
+     A            FECING         8S         TEXT('Fecha Ingreso       ')
+     A            USRMOD        10A         TEXT('Usuario Modifica    ')
+     A            HORMOD         8S         TEXT('Hora Modifica       ')
+     A            FECMOD         8S         TEXT('Fecha Modifica      ')
+     A          K BINEXO
+     A          K TIPCAJ
+     A          K TIPCLI
+     A          K CODCON
+     A          K CODPRO
