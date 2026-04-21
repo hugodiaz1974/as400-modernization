@@ -68,6 +68,20 @@ CREATE TABLE IF NOT EXISTS logexocom (
 );
 
 -- ┌─────────────────────────────────────────────────────────────
+-- │ TABLA 3B: PLTFECHAS  (Fechas del Sistema Bancario)
+-- │ Tabla central para controlar la contabilidad/fecha de proceso
+-- └─────────────────────────────────────────────────────────────
+CREATE TABLE IF NOT EXISTS pltfechas (
+    codemp  INTEGER NOT NULL,
+    codsis  INTEGER NOT NULL,
+    fecpra  INTEGER NOT NULL,
+    fecpro  INTEGER NOT NULL,
+    fecprs  INTEGER NOT NULL,
+    fecpss  INTEGER NOT NULL,
+    PRIMARY KEY (codemp, codsis)
+);
+
+-- ┌─────────────────────────────────────────────────────────────
 -- │ TABLA 4: CLIMAE  (Maestro de Clientes)
 -- │ Traducción directa del archivo CLIMAE.PF del AS/400
 -- │ Contiene toda la información del cliente/asociado
@@ -256,6 +270,11 @@ INSERT INTO clitab (codtab, codint, codnom) VALUES
     (236, 99, 'Todo Tipo Transaccion')
 ON CONFLICT DO NOTHING;
 
+-- ── Tabla PLTFECHAS: Inicialización ──────────────────────────
+INSERT INTO pltfechas (codemp, codsis, fecpra, fecpro, fecprs, fecpss)
+VALUES (1, 5, 20231024, 20231025, 20231026, 20231027)
+ON CONFLICT DO NOTHING;
+
 -- ── Datos iniciales de Exoneraciones ─────────────────────────
 INSERT INTO transaction_exemptions (bin_exo, tip_caj, tip_cli, cod_con, cod_pro, can_exo, usr_ing)
 VALUES
@@ -264,9 +283,9 @@ VALUES
 ON CONFLICT DO NOTHING;
 
 -- ── Datos Iniciales de Usuarios (Como un RSTUSRPRF) ──────────
--- Contraseña por defecto: 123456 (encriptada con bcrypt, hash: $2a$10$X1j18H1P0.oB/A3P7G46JupJvD5B5n5mPzRYF/s08qG5x6v9G9NRO)
+-- Contraseña por defecto: 123456 (encriptada con bcrypt, hash: $2a$10$RynFqTmVTHJW9FOs/qG3M.5Q0RRgcBDlMTgRGO0yUXuGgVnmI7MpS)
 INSERT INTO usuarios_sistema (usuario, password, nombre_real, rol) 
 VALUES 
-    ('admin', '$2a$10$X1j18H1P0.oB/A3P7G46JupJvD5B5n5mPzRYF/s08qG5x6v9G9NRO', 'Administrador Global', 'Admin'),
-    ('hdiaz', '$2a$10$X1j18H1P0.oB/A3P7G46JupJvD5B5n5mPzRYF/s08qG5x6v9G9NRO', 'Hugo Diaz', 'Admin')
+    ('admin', '$2a$10$RynFqTmVTHJW9FOs/qG3M.5Q0RRgcBDlMTgRGO0yUXuGgVnmI7MpS', 'Administrador Global', 'Admin'),
+    ('hdiaz', '$2a$10$RynFqTmVTHJW9FOs/qG3M.5Q0RRgcBDlMTgRGO0yUXuGgVnmI7MpS', 'Hugo Diaz', 'Admin')
 ON CONFLICT (usuario) DO NOTHING;

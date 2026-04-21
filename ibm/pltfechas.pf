@@ -1,0 +1,28 @@
+      *---------------------------------------------------------------*
+      * Material Bajo Licencia de Taylor & Johnson                    *
+      * Copyright : TAYLOR & JOHNSON 1996 ..1999 , 2000..2005         *
+      *             Todos los Derechos Reservados                     *
+      *---------------------------------------------------------------*
+      * Derechos Restringidos para los usuarios, el uso, la duplica-  *
+      * cion o publicacion quedan sujetos al contrato con Taylor &    *
+      * Johnson                                                       *
+      *---------------------------------------------------------------*
+      * Version : 5.0   Enero del 2005                                *
+      *---------------------------------------------------------------*
+     A                                      UNIQUE
+     A          R REGFECHAS
+     A                                      TEXT('Tabla de Fechas          ')
+     A            CODEMP         5P 0       TEXT('Codigo Empresa           ')
+     A                                      COLHDG('Codigo' 'Entidad     '  )
+     A            CODSIS         3P 0       TEXT('Codigo del Sistema')
+     A                                      COLHDG('Codigo' 'Sistema     '  )
+     A            FECPRA         9P 0       TEXT('Fecha Proceso Anterior')
+     A                                      COLHDG('Fecha ' 'Ayer        '  )
+     A            FECPRO         9P 0       TEXT('Fecha de Proceso')
+     A                                      COLHDG('Fecha ' 'Hoy         '  )
+     A            FECPRS         9P 0       TEXT('Fecha Proceso Siguiente')
+     A                                      COLHDG('Fecha ' 'Mañana      '  )
+     A            FECPSS         9P 0       TEXT('Fecha Pro Subsiguiente ')
+     A                                      COLHDG('Fecha ' 'Pasado Mañana' )
+     A          K CODEMP
+     A          K CODSIS

@@ -1,0 +1,17 @@
+     A                                      UNIQUE
+     A          R REGTABMAE
+      *----------------------------------------------------------------
+      * Material Bajo Licencia de Taylor & Johnson Ltda.              |
+      * Copyright : TAYLOR & JOHNSON 1996, 1999, 2000,2001            |
+      *             Todos los Derechos Reservados                     |
+      *----------------------------------------------------------------
+      * Derechos Restringidos para los usuarios, el uso, la duplica-  |
+      * cion o publicacion quedan sujetos al contrato con Taylor &    |
+      * Johnson                                                       |
+      *----------------------------------------------------------------
+     A            CODTAB         4P         TEXT('Codigo de la Tabla         ')
+     A            CODINT        17P         TEXT('Codigo Interno de Tabla    ')
+     A            CODNOM        70A         TEXT('Nombre                     ')
+     A            CODPRO        10A         TEXT('Rutina Validadora          ')
+     A          K CODTAB
+     A          K CODINT

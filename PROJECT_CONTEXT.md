@@ -8,32 +8,31 @@ El objetivo maestro es desvincular al banco del legacy IBM i (AS/400) y migrar l
 ## 2. Arquitectura Establecida (Three-Tier)
 Hemos refactorizado el código COBOL (específicamente `PLTEXO100`) hacia un stack tecnológico moderno:
 
-- **Frontend:** React.js con Tailwind CSS y Lucide Icons. Diseñado como un Dashboard Premium Fintech ("Core Bancario AWS").
-- **Backend:** Node.js con Express, actuando como un microservicio RESTful.
-- **Base de Datos:** PostgreSQL, actuando como reemplazo transaccional de DB2. 
-- **Infraestructura:** Todo el stack está 100% dockerizado (`docker-compose.yml`) asegurando portabilidad.
+- **Frontend:** React.js modularizado con **Context API** para autenticación. Estructura de componentes desacoplados (`src/components/`).
+- **Backend:** Node.js con Express, reforzado con **Control Transaccional Atómico (Atomic Commit/Rollback)**.
+- **Base de Datos:** PostgreSQL con tablas espejo del AS/400 (`CLITAB`, `TRANSACTION_EXEMPTIONS`, `LOGEXOCOM`, `PLTFECHAS`).
+- **Infraestructura:** Stack dockerizado (`docker-compose.yml`) con Nginx para el frontend.
 
-## 3. Lógica de Parámetros Dinámicos
-La lógica del AS/400 se basaba en la tabla física `CLITAB`. La hemos migrado a PostgreSQL, de tal modo que el Frontend descarga dinámicamente:
-- `335`: BINes de Exoneración
-- `334`: Tipos de Cliente (Ej. VIP, Corporativo)
-- `333`: Tipos de Cajero (Redes locales, internacionales)
-- `336`: Tipos de Producto (Tarjetas Black, Platinum, etc.)
+## 3. Lógica de Paridad Bancaria Estricta
+Se han replicado lógicas críticas del programa `pltexo100.cbl` para asegurar que el backend se comporte igual al Mainframe:
+- **Validación Dinámica de Parámetros (`CLITAB`):** No se insertan datos si el BIN, Cajero o Producto no existen activos en los catálogos.
+- **Control de Fechas Bancarias (`PLTFECHAS`):** El sistema ignora el reloj del servidor y usa la fecha contable oficial del banco (`fecpro`).
+- **Bloqueo del "Comodín" Universal (99/0):** Se prohíbe parametrizar exoneraciones globales para evitar riesgos de seguridad financiera.
 
-## 4. Seguridad de Grado Bancario implementada (JWT)
-Para simular el control de los Perfiles de Usuario (`CRTUSRPRF`), hemos implementado lo siguiente:
-- Autenticación manejada mediante librerías **JSON Web Token (JWT)**.
-- Base de datos con la tabla `usuarios_sistema`.
-- **Encriptación de passwords irreversibles** usando el algoritmo `Bcrypt`.
-- El Dashboard frontal está completamente bloqueado a menos que exista un token válido.
-- Credenciales útiles de desarrollo inyectadas: `hdiaz` / `admin123` y `admin` / `admin123`.
-- **Auditoría:** La antigua lógica temporal de escribir literal "SISTEMA" o "USUARIO" en `LOGEXOCOM` fue reemplazada. El backend Node.js ahora intersecta el JWT y extrae el usuario genuino para registrarlo en el LOG de auditoría de BD.
+## 4. Integridad Transaccional (Commitment Control)
+A diferencia de un CRUD simple, las operaciones de escritura están blindadas:
+- **Atomicidad:** Inserción de Exoneración + Log de Auditoría ocurren en el mismo bloque `BEGIN/COMMIT`. Si uno falla, se activa un `ROLLBACK` total.
+- **Bloqueo de Concurrencia:** Uso de `SELECT FOR UPDATE` en modificaciones/borrados para evitar colisiones de datos bajo alta carga transaccional.
 
-## 5. Próximos pasos pendientes en la hoja de ruta
-Al retomar el proyecto, se debe elegir entre:
-1.  **Despliegue a AWS:** Instalar infraestructura real (EC2 / ECS / RDS) en Amazon para tener URLs públicas. Integrar (opcionalmente) Amazon Cognito para absorber el JWT.
-2.  **Migrar más módulos AS/400:** Traducir e integrar a la plataforma los códigos fuente `PLTPARGEN` o `PLTFECHAS`.
-3.  **Exportación e Inyección de Datas reales:** Sacar un CSV de la producción del Banco AS/400 real e importarlo a nuestro PostgreSQL.
+## 5. Seguridad y Autenticación (JWT)
+- **Tecnología:** JSON Web Token (JWT) + Bcrypt.
+- **Identidad:** El backend extrae al `actor` del token para la auditoría física.
+- **Credenciales Activas:** `hdiaz` / `admin` con contraseña por defecto: **`123456`**.
+
+## 6. Próximos pasos pendientes en la hoja de ruta
+1.  **Despliegue a AWS:** Instalar infraestructura real (RDS / ECS) usando Terraform o CloudFormation.
+2.  **Integración de Reportes:** Crear reportes de auditoría usando los datos de `LOGEXOCOM`.
+3.  **Migración de Clientes:** Implementar el CRUD para la tabla `CLIMAE` (Maestro de Clientes).
 
 ## Nota para el Asistente IA (Antigravity):
-Si estás leyendo esto en una nueva sesión, debes asumir automáticamente el rol de asistente experto de Migración de AS/400 hacia Node.js/React. Respeta el stack arquitectónico definido, revisa los archivos `server.js` y `App.jsx` para entender el marco de programación establecido y no rompas la securización JWT.
+Si estás en una nueva sesión, mantén la arquitectura modular del frontend. No rompas el `AuthContext`. Al editar el backend, respeta siempre el uso del cliente `client = await pool.connect()` para transacciones. No uses `CURRENT_TIMESTAMP` en auditorías; usa la función `getFecpro()`.
