@@ -19,16 +19,22 @@ Migrar la lógica de negocio de tarjetas de crédito desde un IBM i (AS/400) hac
 - **Validación Estricta:** Antes de insertar en `transaction_exemptions`, se DEBE validar que los códigos existan en la tabla de parámetros `CLITAB`.
 - **Prohibido Comodines:** No permitir la creación de exoneraciones con el código `99` (Todos) o `0` a menos que sea una consulta de lectura.
 
-## 4. Estructura de Código
-- **Frontend:** No crear componentes monolíticos. Usar la estructura en `src/components/` y mantener `AuthContext` como fuente de verdad para la sesión.
-- **Backend:** Mantener la lógica en `server.js` pero asegurar el uso de `client = await pool.connect()` para garantizar que el rollback funcione correctamente.
+## 4. Estructura de Código y Estándares QA
+- **Prohibición de Monolitos:** CUALQUIER funcionalidad nueva debe fragmentarse en componentes atómicos dentro de `src/components/`. Está terminantemente prohibido hacer crecer `App.jsx` con lógica de negocio.
+- **Gestión de Estado:** Usar `Context API` (`AuthContext`) para evitar el "Prop Drilling". Los componentes deben ser lo más puros y reutilizables posible.
+- **Rendimiento:** Implementar `useMemo` y `useCallback` en listados y tablas de alta transaccionalidad para optimizar el renderizado.
+- **Backend Modular:** Aunque la lógica actual reside en `server.js`, se debe priorizar la creación de controladores y rutas separadas si el proyecto escala, evitando un solo archivo masivo.
 
-## 5. Credenciales de Desarrollo
+## 5. Principios de Ingeniería
+- **Clean Code:** Código autodocumentado con nombres de variables descriptivos (evitar nombres crípticos del AS/400 en el código Javascript, usar nombres claros como `exonerationData` en lugar de `EXODAT`).
+- **Seguridad:** NUNCA exponer secretos o contraseñas en el código. Usar variables de entorno.
+
+## 6. Credenciales de Desarrollo
 - **URL Local:** `http://localhost:80`
 - **Usuario:** `hdiaz` o `admin`
 - **Password:** `123456` (Hash Bcrypt corregido).
 
-## 6. Documentación de Referencia
+## 7. Documentación de Referencia
 Consultar siempre la carpeta `/docs` para ver manuales de equivalencias y planos de arquitectura.
 
 ---
