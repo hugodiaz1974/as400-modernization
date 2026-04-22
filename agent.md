@@ -40,7 +40,14 @@ Migrar la lógica de negocio de tarjetas de crédito desde un IBM i (AS/400) hac
 - **Usuario:** `hdiaz` o `admin`
 - **Password:** `123456` (Hash Bcrypt corregido).
 
-## 8. Documentación de Referencia
+## 8. Protocolo de Verificación (Multi-PC)
+Para confirmar que el entorno es correcto tras un cambio de equipo (ASUS <-> LENOVO):
+1. **Sincronizar:** `git pull origin main` (Confirmar "Already up to date").
+2. **Docker Check:** `docker compose ps` (Confirmar que los 3 servicios están "Running").
+3. **Login Test:** Entrar a `http://localhost` con `hdiaz` / `123456`.
+4. **Data Test:** Crear un registro de prueba y verificar que aparezca en la tabla.
+
+## 9. Documentación de Referencia
 Consultar siempre la carpeta `/docs` para ver manuales de equivalencias y planos de arquitectura.
 
 ---
