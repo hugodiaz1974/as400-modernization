@@ -29,12 +29,18 @@ Migrar la lógica de negocio de tarjetas de crédito desde un IBM i (AS/400) hac
 - **Clean Code:** Código autodocumentado con nombres de variables descriptivos (evitar nombres crípticos del AS/400 en el código Javascript, usar nombres claros como `exonerationData` en lugar de `EXODAT`).
 - **Seguridad:** NUNCA exponer secretos o contraseñas en el código. Usar variables de entorno.
 
-## 6. Credenciales de Desarrollo
+## 6. Comandos de Despliegue (Quick Start)
+- **Iniciar Entorno:** `docker compose up -d --build`
+- **Apagar Entorno:** `docker compose down`
+- **Ver Logs de Errores:** `docker compose logs -f`
+- **Resetear Base de Datos:** `docker compose down -v` (Cuidado: borra datos no commiteados en SQL).
+
+## 7. Credenciales de Desarrollo
 - **URL Local:** `http://localhost:80`
 - **Usuario:** `hdiaz` o `admin`
 - **Password:** `123456` (Hash Bcrypt corregido).
 
-## 7. Documentación de Referencia
+## 8. Documentación de Referencia
 Consultar siempre la carpeta `/docs` para ver manuales de equivalencias y planos de arquitectura.
 
 ---
