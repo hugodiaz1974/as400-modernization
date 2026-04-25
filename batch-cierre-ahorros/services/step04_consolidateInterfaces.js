@@ -37,6 +37,32 @@ async function consolidateInterfaces(client) {
 
   for (const intf of interfaces.rows) {
     if (intf.indnov === '2' || intf.indnov === 2) {
+      // =========================================================
+      // LÓGICA DE NEGOCIO CCA512: Enriquecimiento de Movimientos
+      // =========================================================
+      console.log(`  [MON] Ejecutando lógica CCA512 sobre CCAMOVIM...`);
+      
+      // 1. Cálculo de Indicador de Fecha Valor (FECVAL)
+      // Si la fecha de efectividad (FVALOR) es mayor a la fecha de proceso (FORIGE), es diferido (2).
+      await client.query(`
+        UPDATE CCAMOVIM 
+        SET fecval = CASE 
+          WHEN fvalor > forige THEN 2 
+          ELSE 1 
+        END
+        WHERE fecval IS NULL OR fecval = 0
+      `);
+
+      // 2. Inicialización de Estados
+      // ESTTRN = 0 (Ingresado, pendiente de evaluar saldos en CCA580)
+      await client.query(`
+        UPDATE CCAMOVIM 
+        SET esttrn = 0 
+        WHERE esttrn IS NULL
+      `);
+
+      // =========================================================
+
       // Interfaz monetaria → contar registros en CCAMOVIM
       const countRes = await client.query('SELECT COUNT(*) as cnt FROM CCAMOVIM');
       const cnt = parseInt(countRes.rows[0].cnt);
