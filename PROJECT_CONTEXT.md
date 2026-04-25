@@ -38,10 +38,19 @@ Se ha migrado exitosamente el orquestador principal del cierre de día (`CCACIER
 - **Monitor en Tiempo Real:** Dashboard funcional que muestra los 31 pasos del cierre, tiempos de ejecución y estado.
 - **Certificación de Auditoría Senior (Abril 2026):** El sistema fue auditado y blindado contra errores de punto flotante mediante `decimal.js`. Se garantizó la paridad del 100% de los campos de rechazo en `CCAMOVIM`.
 
-## 7. Próximos pasos pendientes
-1.  **Estabilización del Disparador:** Depurar el inicio remoto desde el Dashboard (Trigger remota).
-2.  **Validación de Saldo en Producción:** Realizar un "Parallel Run" comparando los resultados del cierre AS/400 vs Node.js día a día.
-3.  **Despliegue a AWS:** Migrar la infraestructura a AWS (RDS, ECS, Batch).
+## 7. Lecciones Aprendidas Críticas (Regla de Oro de Auditoría) 🛑
+Tras fallos graves en la modernización de los módulos CCA512 y CCA601 (donde la IA simplificó programas COBOL a simples copias SQL perdiendo lógica vital como el cobro de tarifas o el cálculo de sobregiros), se ha establecido una **Metodología de Cero Suposiciones**:
+- La modernización NO es "traducir el flujo" del CLP.
+- La modernización EXIGE leer el código fuente original. Todo programa (ej. CCA601) debe ser escaneado internamente (`grep` o `view_file` en `CCA/CCACBL`) para extraer sus llamadas anidadas (ej. CCA491, PLT219) y sus fórmulas matemáticas antes de escribir una sola línea de JavaScript.
+- Nunca se debe asumir el comportamiento de un módulo bancario por "estándares de la industria"; todo debe basarse en el código local de Taylor & Johnson Ltda.
 
-## Nota para el Asistente IA (Antigravity):
-Mantén la arquitectura modular. Al editar el batch, respeta siempre el uso de `client = await pool.connect()` para transacciones. No uses `CURRENT_TIMESTAMP`; usa siempre `fecpro` de `PLTFECHAS`. Para nuevos procesos, sigue la nomenclatura `stepXX_nombreServicio.js` para mantener el orden secuencial del CLP.
+## 8. Próximos pasos pendientes
+1.  **Auditoría y Reparación del CCA601:** Realizar reingeniería inversa estricta del CCA491 (Cálculo de Tarifas) y PLT219 (Días) para inyectarlo en el `step15_dailyAccrual.js`.
+2.  **Estabilización del Disparador:** Depurar el inicio remoto desde el Dashboard.
+3.  **Validación de Saldo en Producción:** Realizar un "Parallel Run" comparando los resultados del cierre AS/400 vs Node.js.
+
+## Nota Crítica para el Asistente IA (Antigravity):
+Mantén la arquitectura modular. Al iniciar cualquier tarea sobre un proceso existente:
+1. **Obligatorio:** Utiliza `grep_search` o `view_file` sobre los archivos `.cbl` y `.clp` originales ubicados en `CCA\CCACBL\` o en la raíz del proyecto ANTES de generar código Node.js o responder.
+2. Extrae las fórmulas matemáticas, validaciones paramétricas y llamadas anidadas (`CALL "CCA..."`). ¡No alucines ni uses conocimiento genérico de banca!
+3. Usa `client = await pool.connect()` para transacciones de BD y `fecpro` de `PLTFECHAS` (nunca CURRENT_TIMESTAMP). Usa `decimal.js` para TODA matemática monetaria.
