@@ -46,19 +46,29 @@ async function updateBalances(client) {
         continue;
       }
 
-      // Aplicar al saldo
+      // Aplicar al saldo y actualizar estadística vital
       if (mov.debcre == 1) {
-        // Débito: restar del saldo
-        await client.query(
-          'UPDATE CCAMAEAHO SET salact = salact - $1 WHERE ctanro = $2',
-          [mov.import, mov.ctanro]
-        );
+        // Débito: restar del saldo, actualizar último retiro y acumuladores
+        await client.query(`
+          UPDATE CCAMAEAHO 
+          SET salact = salact - $1,
+              fpulre = fultre,      -- Penúltimo retiro hereda el último
+              fultre = $2,          -- Nueva fecha de último retiro
+              fulmov = $2,          -- Nueva fecha de último movimiento
+              debdia = COALESCE(debdia, 0) + $1, 
+              acudeb = COALESCE(acudeb, 0) + $1
+          WHERE ctanro = $3
+        `, [mov.import, mov.forige, mov.ctanro]);
       } else if (mov.debcre == 2) {
-        // Crédito: sumar al saldo
-        await client.query(
-          'UPDATE CCAMAEAHO SET salact = salact + $1 WHERE ctanro = $2',
-          [mov.import, mov.ctanro]
-        );
+        // Crédito: sumar al saldo, actualizar último movimiento y acumuladores
+        await client.query(`
+          UPDATE CCAMAEAHO 
+          SET salact = salact + $1,
+              fulmov = $2,          -- Nueva fecha de último movimiento
+              credia = COALESCE(credia, 0) + $1, 
+              acucre = COALESCE(acucre, 0) + $1
+          WHERE ctanro = $3
+        `, [mov.import, mov.forige, mov.ctanro]);
       }
 
       aplicados++;

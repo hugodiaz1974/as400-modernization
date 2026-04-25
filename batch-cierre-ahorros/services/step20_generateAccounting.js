@@ -26,18 +26,28 @@ async function generateAccounting(client) {
     return;
   }
 
-  // Generar asientos agrupados por código de transacción y agencia
+  // Consolidar todas las fuentes en un solo motor (Partida Doble)
   const fechaRes = await client.query('SELECT fecpro FROM PLTFECHAS WHERE codsis = 11 LIMIT 1');
   const fechaProceso = fechaRes.rows[0].fecpro;
 
   const asientos = await client.query(`
+    WITH MovimientosConsolidados AS (
+      SELECT codtra, agcori, debcre, import FROM CCACAUHOY
+      UNION ALL
+      SELECT codtra, agcori, debcre, import FROM CCAMOVINT
+      UNION ALL
+      SELECT codtra, agcori, debcre, import FROM CCAMOVINC
+      UNION ALL
+      SELECT codtra, agcori, debcre, import FROM CCAMOVNEG
+    )
     SELECT codtra as codtrn, agcori, debcre as tipmov, SUM(import) as vlrtrn, COUNT(*) as nroreg
-    FROM CCACAUHOY
+    FROM MovimientosConsolidados
     GROUP BY codtra, agcori, debcre
   `);
 
   let seq = 1;
   for (const a of asientos.rows) {
+    // Generar línea contable maestra
     await client.query(`
       INSERT INTO PLTTRNCCA (codemp, agcori, codmon, codcaj, nrotrn, cnstrn, fecpro, codtrn, tipmov, vlrtrn)
       VALUES (1, $1, 1, 'BATCH', $2, 1, $3, $4, $5, $6)

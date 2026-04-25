@@ -44,7 +44,23 @@ async function validateNovelties(client) {
       rechaz = 'Cuenta no existe en maestro';
       rechazadas++;
     } else {
-      aplicadas++;
+      // Validar: código de novedad existe en catálogo
+      const codnovCheck = await client.query('SELECT 1 FROM CCATABNOV WHERE codnov = $1 LIMIT 1', [nov.codnov]);
+      if (codnovCheck.rows.length === 0) {
+        indres = 0;
+        rechaz = 'Código de novedad inválido';
+        rechazadas++;
+      } else {
+        // Validar: agencia existe
+        const agcCheck = await client.query('SELECT 1 FROM PLTAGENCI WHERE codagc = $1 LIMIT 1', [nov.agccta]);
+        if (agcCheck.rows.length === 0) {
+          indres = 0;
+          rechaz = 'Agencia origen inválida';
+          rechazadas++;
+        } else {
+          aplicadas++;
+        }
+      }
     }
 
     await client.query(`
