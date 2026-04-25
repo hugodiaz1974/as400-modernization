@@ -27,7 +27,7 @@ async function markStepRunning(client, codsis, fecpro, paso) {
 
 async function markStepCompleted(client, codsis, fecpro, paso) {
   await client.query(`
-    UPDATE PLTCHECKPOINT SET estado = 'COMPLETADO', fecact = CURRENT_TIMESTAMP
+    UPDATE PLTCHECKPOINT SET estado = 'COMPLETADO', error = NULL, fecact = CURRENT_TIMESTAMP
     WHERE codsis = $1 AND fecpro = $2 AND paso = $3
   `, [codsis, fecpro, paso]);
 }
