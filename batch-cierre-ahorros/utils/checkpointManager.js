@@ -33,10 +33,17 @@ async function markStepCompleted(client, codsis, fecpro, paso) {
 }
 
 async function markStepFailed(client, codsis, fecpro, paso, errorMsg) {
+  // Se usa INSERT ON CONFLICT porque si el orquestador hizo ROLLBACK, 
+  // la fila "INICIADO" ya no existe para la conexión de logueo independiente.
+  const errorText = errorMsg instanceof Error ? errorMsg.message : String(errorMsg);
   await client.query(`
-    UPDATE PLTCHECKPOINT SET estado = 'ERROR', fecact = CURRENT_TIMESTAMP
-    WHERE codsis = $1 AND fecpro = $2 AND paso = $3
-  `, [codsis, fecpro, paso]);
+    INSERT INTO PLTCHECKPOINT (codsis, fecpro, paso, estado, error)
+    VALUES ($1, $2, $3, 'FALLIDO', $4)
+    ON CONFLICT (codsis, fecpro, paso) DO UPDATE SET 
+      estado = 'FALLIDO', 
+      error = $4,
+      fecact = CURRENT_TIMESTAMP
+  `, [codsis, fecpro, paso, errorText.substring(0, 255)]); // Truncado por seguridad
 }
 
 module.exports = {
