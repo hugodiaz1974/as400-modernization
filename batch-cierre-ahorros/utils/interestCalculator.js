@@ -23,7 +23,7 @@ function calcularInteresDiario(saldo, tasaAnual, dias = 1) {
   const dSaldo = new Decimal(saldo);
   const dTasaAnual = new Decimal(tasaAnual);
   
-  if (dSaldo.lte(0) || dTasaAnual.lte(0)) return 0;
+  if (dSaldo.lte(0) || dTasaAnual.lte(0)) return new Decimal(0);
 
   // Tasa diaria = tasa anual / 36000
   // Interés = saldo * tasaDiaria * dias
