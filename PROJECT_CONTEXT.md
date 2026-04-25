@@ -44,10 +44,19 @@ Tras fallos graves en la modernización de los módulos CCA512 y CCA601 (donde l
 - La modernización EXIGE leer el código fuente original. Todo programa (ej. CCA601) debe ser escaneado internamente (`grep` o `view_file` en `CCA/CCACBL`) para extraer sus llamadas anidadas (ej. CCA491, PLT219) y sus fórmulas matemáticas antes de escribir una sola línea de JavaScript.
 - Nunca se debe asumir el comportamiento de un módulo bancario por "estándares de la industria"; todo debe basarse en el código local de Taylor & Johnson Ltda.
 
-## 8. Próximos pasos pendientes
-1.  **Auditoría y Reparación del CCA601:** Realizar reingeniería inversa estricta del CCA491 (Cálculo de Tarifas) y PLT219 (Días) para inyectarlo en el `step15_dailyAccrual.js`.
-2.  **Estabilización del Disparador:** Depurar el inicio remoto desde el Dashboard.
-3.  **Validación de Saldo en Producción:** Realizar un "Parallel Run" comparando los resultados del cierre AS/400 vs Node.js.
+## 8. Estatus Actual de Auditoría (Punto de Control - Abril 2026) 📍
+Se paralizó la escritura de Node.js para ejecutar un **Escáner Recursivo Multinivel** sobre el orquestador `CCACIERRE.CLP`. Se descubrió la estructura real (Ej: `CCA510 -> CCA511P -> CCA511 -> PLTCODEMPP`).
+
+**Hallazgos Críticos (Gaps de Lógica en Node.js):**
+1. **Falta de Cobros:** `CCA601` invoca internamente a `CCA491` (Tarifas/Comisiones). Node.js lo omitió.
+2. **Falta de Cuentas Especiales:** `CCA990` gobierna exoneraciones en varios pasos (Saldos, Causación, Rechazos). Node.js no lo tiene.
+3. **Manejo de Fechas:** `PLT219` calcula los días exactos para todo el banco. Node.js lo hace a mano sin paridad.
+4. **Validación Física:** Se identificaron **78 tablas DB2** involucradas en el cierre. Existen todos los fuentes `.cbl` de ahorros, pero **faltan 8 utilitarios** en el repo local (`CLI900`, `PAPCAMBIO`, `PLT201`, `PLTCALDIG`, `PLTBASE`, `PLTPYC`, `PLTCODEMPP`, `SEC993`).
+
+## 9. Próximos pasos para reanudar (Al cambiar de portátil)
+1.  **Decisión Estratégica del Usuario:** Confirmar si se consiguen los 8 fuentes utilitarios faltantes del AS/400 o si se simulan/ignoran.
+2.  **Auditoría y Reparación del CCA601:** Iniciar leyendo el código fuente COBOL de `CCA491` (Tarifas) y `PLT219` (Días) para inyectar matemáticamente esa lógica en `step15_dailyAccrual.js`.
+3.  **Matriz Maestra:** Continuar el mapeo guiado por el archivo local `matriz_auditoria_cierre.md`.
 
 ## Nota Crítica para el Asistente IA (Antigravity):
 Mantén la arquitectura modular. Al iniciar cualquier tarea sobre un proceso existente, sin importar a qué subsistema bancario pertenezca (Ahorros CCA, CDTs CDT, Créditos CRE, etc.):
