@@ -38,7 +38,10 @@ async function updateBalances(client) {
       // FECVAL=1: Hoy, FECVAL=2: Mañana, FECVAL=3: Pasado mañana
       if (mov.fecval && mov.fecval > 1) {
         // Diferido → CCAMOVDIF (no afecta saldo hoy)
-        await client.query('INSERT INTO CCAMOVDIF SELECT * FROM CCAMOVIM WHERE ctoid = $1', [mov.ctoid]);
+        await client.query(
+          'INSERT INTO CCAMOVDIF SELECT * FROM CCAMOVIM WHERE ctanro = $1 AND forige = $2 AND import = $3 AND codtra = $4', 
+          [mov.ctanro, mov.forige, mov.import, mov.codtra]
+        );
         diferidos++;
         continue;
       }

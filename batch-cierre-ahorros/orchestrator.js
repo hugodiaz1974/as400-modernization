@@ -81,8 +81,7 @@ async function runBatch() {
   const client = await pool.connect();
 
   try {
-    // Paso 0: Verificación de Entorno y BLOQUEO EXCLUSIVO (Inicia Transacción)
-    await client.query('BEGIN');
+    // Paso 0: Verificación de Entorno y BLOQUEO DE JOB
     const fecpro = await runStep(client, 11, null, 'step00_verifyEnvironment', step00.verifyEnvironment);
 
     // Los pasos se ejecutan secuencialmente
@@ -122,16 +121,15 @@ async function runBatch() {
     await runStep(client, 11, fecpro, 'step29_backups', step29.backups);
     await runStep(client, 11, fecpro, 'step30_dateProjection', step30.dateProjection);
 
-    await client.query('COMMIT');
-    
     const duration = ((Date.now() - startTime) / 1000).toFixed(2);
     console.log(`\n✅ CIERRE BATCH FINALIZADO EXITOSAMENTE en ${duration}s`);
 
   } catch (error) {
-    await client.query('ROLLBACK');
     console.error('\n❌ ERROR CRITICO DURANTE EL CIERRE:', error.message);
     process.exit(1);
   } finally {
+    // Liberar el bloqueo de sesión al desconectar
+    await client.query("SELECT pg_advisory_unlock(hashtext('CCAMAEAHO'))");
     client.release();
   }
 }

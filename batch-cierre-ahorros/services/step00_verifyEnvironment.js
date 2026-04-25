@@ -25,9 +25,9 @@ async function verifyEnvironment(client) {
     throw new Error(`El cierre para la fecha ${fecpro} ya ha sido completado exitosamente.`);
   }
 
-  // 3. Bloqueo exclusivo de la tabla maestra (Replica ALCOBJ *EXCL)
+  // 3. Bloqueo exclusivo de la tabla maestra a nivel de sesión (Replica ALCOBJ *EXCL)
   console.log('  Solicitando bloqueo exclusivo de CCAMAEAHO...');
-  await client.query('LOCK TABLE CCAMAEAHO IN EXCLUSIVE MODE');
+  await client.query("SELECT pg_advisory_lock(hashtext('CCAMAEAHO'))");
   console.log('  ✅ Tabla CCAMAEAHO bloqueada correctamente.');
 
   console.log('  ✅ Verificación de entorno exitosa.\n');
