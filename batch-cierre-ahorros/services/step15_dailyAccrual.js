@@ -100,8 +100,6 @@ async function dailyAccrual(client) {
   console.log(`  Total interés causado: $${totalCausado.toFixed(2)}`);
   console.log(`  Total comisiones/impuestos: $${totalTarifas.toFixed(2)}`);
   console.log('  ✅ CCA601 completado.\n');
-}$${totalTarifas.toFixed(2)}`);
-  console.log('  ✅ CCA601 completado.\n');
 }
 
 module.exports = { dailyAccrual };
