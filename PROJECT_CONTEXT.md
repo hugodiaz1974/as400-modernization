@@ -50,7 +50,7 @@ Tras fallos graves en la modernización de los módulos CCA512 y CCA601 (donde l
 3.  **Validación de Saldo en Producción:** Realizar un "Parallel Run" comparando los resultados del cierre AS/400 vs Node.js.
 
 ## Nota Crítica para el Asistente IA (Antigravity):
-Mantén la arquitectura modular. Al iniciar cualquier tarea sobre un proceso existente:
-1. **Obligatorio:** Utiliza `grep_search` o `view_file` sobre los archivos `.cbl` y `.clp` originales ubicados en `CCA\CCACBL\` o en la raíz del proyecto ANTES de generar código Node.js o responder.
-2. Extrae las fórmulas matemáticas, validaciones paramétricas y llamadas anidadas (`CALL "CCA..."`). ¡No alucines ni uses conocimiento genérico de banca!
+Mantén la arquitectura modular. Al iniciar cualquier tarea sobre un proceso existente, sin importar a qué subsistema bancario pertenezca (Ahorros CCA, CDTs CDT, Créditos CRE, etc.):
+1. **Obligatorio:** Utiliza `grep_search` o `view_file` sobre los archivos fuente originales del AS/400 (`.cbl`, `.clp`, `.rpg`, `.rpgle`) ubicados en el repositorio del proyecto ANTES de generar código Node.js o responder.
+2. Extrae las fórmulas matemáticas, validaciones paramétricas y llamadas anidadas (`CALL ...`). ¡No alucines ni uses conocimiento genérico de banca! Todo debe estar sustentado en el código legacy local.
 3. Usa `client = await pool.connect()` para transacciones de BD y `fecpro` de `PLTFECHAS` (nunca CURRENT_TIMESTAMP). Usa `decimal.js` para TODA matemática monetaria.
