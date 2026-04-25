@@ -20,6 +20,7 @@ Migrar la lógica de negocio de tarjetas de crédito desde un IBM i (AS/400) hac
 - **Prohibido Comodines:** No permitir la creación de exoneraciones con el código `99` (Todos) o `0` a menos que sea una consulta de lectura.
 - **Mapeo Estricto de Datos (Lección Aprendida):** Al realizar `INSERT` o `UPDATE`, está PROHIBIDO omitir campos secundarios de auditoría o inventar nombres de columnas. Se debe consultar el diccionario de datos físico y poblar el 100% de las columnas.
 - **Precisión Bancaria (Ley de Hierro):** Está TERMINANTEMENTE PROHIBIDO usar `parseFloat()`, `toFixed()` o aritmética estándar de JS (`+`, `-`, `*`, `/`) para cálculos de saldos, intereses o tarifas. Se debe usar obligatoriamente la librería `decimal.js` con redondeo `ROUND_HALF_UP` para garantizar paridad con COBOL.
+- **Cero Suposiciones (Lectura Estricta de Código Fuente):** NUNCA traducir el flujo de un programa basándose solo en su nombre o en estándares de la industria bancaria. ANTES de escribir JavaScript, el agente ESTÁ OBLIGADO a hacer un `grep_search` o `view_file` de los archivos fuente originales `.cbl` y `.clp` (ej. en `CCA\CCACBL\`) para extraer el árbol exacto de dependencias (los `CALL`) y las fórmulas matemáticas reales del banco.
 
 ## 4. Estructura de Código y Estándares QA
 - **Prohibición de Monolitos:** CUALQUIER funcionalidad nueva debe fragmentarse en componentes atómicos dentro de `src/components/`. Está terminantemente prohibido hacer crecer `App.jsx` con lógica de negocio.
