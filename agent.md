@@ -18,6 +18,8 @@ Migrar la lógica de negocio de tarjetas de crédito desde un IBM i (AS/400) hac
 - **Auditoría Obligatoria:** Cada acción de escritura debe registrarse atómicamente en la tabla `LOGEXOCOM`.
 - **Validación Estricta:** Antes de insertar en `transaction_exemptions`, se DEBE validar que los códigos existan en la tabla de parámetros `CLITAB`.
 - **Prohibido Comodines:** No permitir la creación de exoneraciones con el código `99` (Todos) o `0` a menos que sea una consulta de lectura.
+- **Mapeo Estricto de Datos (Lección Aprendida):** Al realizar `INSERT` o `UPDATE`, está PROHIBIDO omitir campos secundarios de auditoría o inventar nombres de columnas. Se debe consultar el diccionario de datos físico y poblar el 100% de las columnas.
+- **Precisión Bancaria (Ley de Hierro):** Está TERMINANTEMENTE PROHIBIDO usar `parseFloat()`, `toFixed()` o aritmética estándar de JS (`+`, `-`, `*`, `/`) para cálculos de saldos, intereses o tarifas. Se debe usar obligatoriamente la librería `decimal.js` con redondeo `ROUND_HALF_UP` para garantizar paridad con COBOL.
 
 ## 4. Estructura de Código y Estándares QA
 - **Prohibición de Monolitos:** CUALQUIER funcionalidad nueva debe fragmentarse en componentes atómicos dentro de `src/components/`. Está terminantemente prohibido hacer crecer `App.jsx` con lógica de negocio.

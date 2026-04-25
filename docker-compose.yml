@@ -44,6 +44,8 @@ services:
     environment:
       DATABASE_URL: postgres://admin:secreto123@database:5432/tarjeta_credito
       PORT: 3001
+    volumes:
+      - ./batch-cierre-ahorros:/app/batch-cierre-ahorros
     depends_on:
       database:
         condition: service_healthy

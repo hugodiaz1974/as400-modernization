@@ -1,0 +1,65 @@
+      *----------------------------------------------------------------
+      * Material Bajo Licencia de Taylor & Johnson                    |
+      * Copyright : TAYLOR & JOHNSON 1996, 1999, 2000, 2001, 2002     |
+      *             Todos los Derechos Reservados                     |
+      *----------------------------------------------------------------
+      * Derechos Restringidos para los usuarios, el uso, la duplica-  |
+      * cion o publicacion quedan sujetos al contrato con Taylor &    |
+      * Johnson                                                       |
+      *----------------------------------------------------------------
+     A          R REGMOVIMR
+     A            CODMON         3S         TEXT('Indicativo de Moneda     ')
+     A            CODSIS         3S         TEXT('Codigo del Sistema       ')
+     A            CODPRO         3S         TEXT('Codigo de Producto       ')
+     A            AGCCTA         5S 0       COLHDG('Nro de Agencia     ')
+     A            CTANRO        17P 0       COLHDG('Nro.Cta Ahorros    ')
+     A            FORIGE         8S 0       COLHDG('Fecha Origen       ')
+     A            DEBCRE         1S 0       COLHDG('Ind.Débito/Crédito ')
+     A            CODTRA         3S 0       COLHDG('Código Transacción ')
+     A            IMPORT        15P 2       COLHDG('Importe            ')
+     A            FVALOR         8S 0       COLHDG('Fecha Valor        ')
+     A            NROREF        17P 0       COLHDG('Nro. de Referencia ')
+     A            FECVAL         1S 0       COLHDG('Ind.Fecha Valor    ')
+     A*          1:Hoy 2:Mañana 3:Pasado Mañana
+     A            TIPVAL         1S 0       COLHDG('Ind. Tipo Valor    ')
+     A* TIPVAL: Tipo Documento Valor. 1:Efectivo 2:Canje 3:Nota DB
+     A*                               4:Nota CR.
+     A* ESTTRN : 0:Normal 9:Anulada
+     A            ESTTRN         1S 0       COLHDG('Estado             ')
+     A            AGCORI         5S 0       COLHDG('Agencia Origen Tran')
+     A            CODCAJ        10A         COLHDG('Usuario Ingreso    ')
+     A            CODER1         2S 0       COLHDG('Código Error       ')
+     A            CODER2         2S 0       COLHDG('Código Error       ')
+     A            CODER3         2S 0       COLHDG('Código Error       ')
+     A*                                                                ')
+     A            CODTRN         3P 0       COLHDG('Código Trans. PLT  ')
+     A            NROTRN         9P 0       TEXT('Secuencia de Transaccion   ')
+     A            CNSTRN         9P 0       TEXT('Consecutivo de Transaccion ')
+     A            HORTRN         9P 0       TEXT('Hora de la Transaccion     ')
+     A            AGCDST         5P 0       TEXT('Codigo Agencia Destino     ')
+     A            MEDPAG         3P 0       TEXT('Medio de Pago              ')
+     A            NROPRD        17A         TEXT('Numero del Producto        ')
+     A            INFDEP        30A         TEXT('Depositante Nombre         ')
+     A            USRING        10A         TEXT('Usuario de Ingreso         ')
+     A            NROOPR        11A         TEXT('Numero de la Operacion     ')
+     A            INDCNJ         1S         TEXT('Indicador de Canje         ')
+     A            INFPRD        60A         TEXT('Informacion del Producto   ')
+     A            NROBNV        16P         TEXT('Numero de Interfase BNK    ')
+     A            NRONIT        16P         TEXT('Nit del Tercer             ')
+     A            IND101         1S         TEXT('Indicativo de Llamada 101  ')
+     A            INDPAT         1S         TEXT('Indicativo de PATE         ')
+     A            CODOPE         3P 0       TEXT('Codigo de Operacion Interna')
+     A            RODMON         3S         TEXT('Moneda de Rechazo  ')
+     A            RODSIS         3S         TEXT('Sistema de Rechazo ')
+     A            RODPRO         3S         TEXT('Producto de rechazo')
+     A            RGCCTA         5S 0       TEXT('Agencia de Rechazo ')
+     A            RTANRO        17P 0       TEXT('Cuenta de Rechazo  ')
+     A            NODMON         3S         TEXT('Moneda de Real     ')
+     A            NODSIS         3S         TEXT('Sistema de Real    ')
+     A            NODPRO         3S         TEXT('Producto de Real   ')
+     A            NGCCTA         5S 0       TEXT('Agencia de Real    ')
+     A            NTANRO        17P 0       TEXT('Cuenta de Real     ')
+     A            NODTRA         3S 0       TEXT('Transacción nueva  ')
+     A            ESTADO         2S 0       TEXT('Estado del rechazo ')
+     A*            0 = Pendiente
+     A*            1 = Ajustado

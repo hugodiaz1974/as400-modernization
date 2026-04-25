@@ -1,0 +1,119 @@
+      *---------------------------------------------------------------*
+      * Material Bajo Licencia de Taylor & Johnson                    *
+      * Copyright : TAYLOR & JOHNSON 1996 ..1999 , 2000..2005         *
+      *             Todos los Derechos Reservados                     *
+      *---------------------------------------------------------------*
+      * Derechos Restringidos para los usuarios, el uso, la duplica-  *
+      * cion o publicacion quedan sujetos al contrato con Taylor &    *
+      * Johnson                                                       *
+      *---------------------------------------------------------------*
+      * Version : 5.0   Enero del 2005                                *
+      *---------------------------------------------------------------*
+     A                                      UNIQUE
+     A          R REGAGCORI
+     A                                      TEXT('Maestro de Agencias      ')
+     A            CODEMP         5P 0       TEXT('Codigo Empresa           ')
+     A                                      COLHDG('Codigo' 'Entidad     '  )
+     A            AGCORI         5P 0       TEXT('Codigo Agencia           ')
+     A                                      COLHDG('Codigo' 'Agencia     '  )
+     A            NOMAGC        40A         TEXT('Nombre de la Agencia        ')
+     A                                      COLHDG('Nombre' 'Agencia     '  )
+     A            CODCIU        10P 0       TEXT('Ciudad de la Agencia        ')
+     A                                      COLHDG('Codigo' 'Ciudad      '  )
+     A            CODSUC         6P 0       TEXT('Código de Sucursal          ')
+     A                                      COLHDG('Codigo' 'Sucursal    '  )
+     A            AGCPPL         6P 0       TEXT('Agencia Principal           ')
+     A                                      COLHDG('Agencia' 'Principal  '  )
+     A            FECCIE         8P 0       TEXT('Fecha de Cierre             ')
+     A                                      COLHDG('Fecha ' 'Cierre      '  )
+     A            HORCIE         8P 0       TEXT('Hora de Cierre              ')
+     A                                      COLHDG('Hora  ' 'Cierre      '  )
+     A            INDCIE         1P 0       TEXT('Indicativo de Cierre        ')
+     A                                      COLHDG('Flag  ' 'Cierre      '  )
+     A            USRCIE        10A         TEXT('Usuario de Cierre           ')
+     A                                      COLHDG('Usuario' 'Cerro      '  )
+     A            FECCCO         8P 0       TEXT('Fecha Ultimo Cuadre Contable')
+     A                                      COLHDG('Fecha ' 'Contable    '  )
+     A            HORCCO         8P 0       TEXT('Hora Ultimo Cuadre Contable ')
+     A                                      COLHDG('Hora  ' 'Contable    '  )
+     A            INDCCO         1P 0       TEXT('Indicativo Cuadre Contable  ')
+     A                                      COLHDG('Flag  ' 'Cuadre Ctble'  )
+     A            USRCCO        10A         TEXT('Usuario Ult.Cuadre Contable ')
+     A                                      COLHDG('Usuario' 'Contable   '  )
+     A            TIPOFI         2P 0       TEXT('Tipo de Oficina             ')
+     A                                      COLHDG('Tipo  ' 'Agencia     '  )
+     A            CODREG         6P 0       TEXT('Codigo Regional             ')
+     A                                      COLHDG('Codigo' 'Regional    '  )
+     A            CODGIR         6P 0       TEXT('Codigo de Giro              ')
+     A                                      COLHDG('Codigo' 'de Giro     '  )
+     A            CODCON         6P 0       TEXT('Codigo Contable             ')
+     A                                      COLHDG('Codigo' 'Contable    '  )
+     A* EL CXAMPO CODCON SE USA EN COOMEVA PARA CODIGO PARA RE
+     A* REPORTAR COMO SITIO DE PAGO EN INTERFACE EPS
+     A            TIPTEC         2P 0       TEXT('Tipo Tecnologia             ')
+     A                                      COLHDG('Tipo  ' 'Tecnologia  '  )
+     A            CONGIR        10P 0       TEXT('Consecutivo Giro            ')
+     A                                      COLHDG('Nro.  ' 'Giro        '  )
+     A            CODREP         6P 0       TEXT('Codigo Banco Republica      ')
+     A                                      COLHDG('Codigo' 'Republica   '  )
+     A*                                     EN COOMEVA ESTE CODREP ES PARA
+     A*                                     CONSECUTIVO NO. CUENTA PREEXPEDIDA
+     A            INDTER         1P 0       TEXT('Indicativo de Terrestre     ')
+     A                                      COLHDG('Flag  ' 'Terrestre   '  )
+     A* INDAER SE USA PARA AUTORIZAR CIERRES A NIVEL DE PRINCIPALES ***********
+     A            INDAER         1P 0       TEXT('Indicativo de Aereo         ')
+     A                                      COLHDG('Flag  ' 'Aereo       '  )
+     A***************************************************  JAD (20090805) *****
+     A            SICOMP         1P 0       TEXT('Indicativo Competencia      ')
+     A                                      COLHDG('Flag  ' 'Competencia '  )
+     A            CODJUD        17P 0       TEXT('Codigo Judicial             ')
+     A                                      COLHDG('Codigo' 'Judicial    '  )
+     A*                                     EN COOMEVA ESTE CODJUD ES PARA
+     A*                                     CONSCUTIVO NRO. CUENTA
+     A            XODJUD         2P 0       TEXT('Codigo Judicial Complemento ')
+     A                                      COLHDG('Codigo' 'Complento   '  )
+     A            FECPLA         5P 0       TEXT('Plan de Fechas              ')
+     A                                      COLHDG('Plan  ' 'Fechas      '  )
+     A            CODCOM        10P 0       TEXT('Cons. Comprobante Contable  ')
+     A                                      COLHDG('Codigo' 'Comprobante '  )
+     A*                                     EN COOMEVA ESTE CODCOM ES PARA
+     A*                                     CONSECUTIVO PARA NUMERO PAGARE
+     A            INDCHL         1P 0       TEXT('Indicativo Cheque Local     ')
+     A                                      COLHDG('Flag  ' 'Canje Local '  )
+     A            INDCHR         1P 0       TEXT('Indicativo Cheque Remesas   ')
+     A                                      COLHDG('Flag  ' 'Remesas     '  )
+     A            CTAREL        12A         TEXT('Cuenta Arrendamientos       ')
+     A                                      COLHDG('Cta   ' 'Relacionada '  )
+     A* EL CAMPO CTAREL LOS PRIMEROS CARACTERES SON PARA
+     A* EL AUXILIAR CONTABLE Y LOS DOS ULTIMOS SON SUCURSAL PARA
+     A* INTERFACE PARA MEDICINA PREPAGADA.
+     A* DE LA POSICION 5 A LA 8 SON EL CENTRO DE COSTO PARA INTERFACE
+     A* DE RECAUDOS ASOCIADOS PARA CARTERA
+     A* DE LA POSICION 9 A LA 10 SON EL TIPO DE COMPROBANTE PARA LA
+     A* INTERFACE CONTABLE PARA EL CG
+     A            CODCRE         6P 0       TEXT('Codigo Credibanco           ')
+     A                                      COLHDG('Codigo' 'Credibanco  '  )
+     A            CODNOD         6P 0       TEXT('Codigo Nodriza              ')
+     A                                      COLHDG('Codigo' 'Nodriza     '  )
+     A* EL CXAMPO CODNOD SE USA EN COOMEVA PARA CODIGO PARA
+     A* REPORTAR COMO SITIO DE PAGO EN INTERFACE PREPAGADA
+     A            CODREM         6P 0       TEXT('Codigo Central Remesas      ')
+     A                                      COLHDG('Codigo' 'Remesas     '  )
+     A            CODZON         6P 0       TEXT('Codigo de Zona Metropolitana')
+     A                                      COLHDG('Codigo' 'Zona        '  )
+     A            CODCEN         6P 0       TEXT('Codigo Central              ')
+     A                                      COLHDG('Codigo' 'Central     '  )
+     A            COP            6P 0       TEXT('Codigo Centro Operaciones   ')
+     A                                      COLHDG('Centro' 'Operaciones '  )
+     A            INDVEG         1P 0       TEXT('Indicativo Vigente          ')
+     A                                      COLHDG('Flag  ' 'Vigente     '  )
+     A            DIAVAU         2P 0       TEXT('Dia Vauchers                ')
+     A                                      COLHDG('Dias  ' 'Vauchers    '  )
+     A            AGCPAG         6P 0       TEXT('Agc. Pagadora Dep.Judiciales')
+     A                                      COLHDG('Paga  ' 'Judiciales  '  )
+     A            RANMIN         2P 0       TEXT('Rango Minimo (Tasa Efectiva)')
+     A                                      COLHDG('Tasa  ' 'Minima      '  )
+     A            RANMAX         2P 0       TEXT('Rango Maximo (Tasa Efectiva)')
+     A                                      COLHDG('Tasa  ' 'Maxima      '  )
+     A          K CODEMP
+     A          K AGCORI

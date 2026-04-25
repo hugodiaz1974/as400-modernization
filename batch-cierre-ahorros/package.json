@@ -1,0 +1,14 @@
+{
+  "name": "batch-cierre-ahorros",
+  "version": "1.0.0",
+  "description": "Worker desatendido para el cierre nocturno de ahorros",
+  "main": "orchestrator.js",
+  "scripts": {
+    "start": "node orchestrator.js"
+  },
+  "dependencies": {
+    "decimal.js": "^10.6.0",
+    "dotenv": "^16.3.1",
+    "pg": "^8.11.3"
+  }
+}

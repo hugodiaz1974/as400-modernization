@@ -1,0 +1,252 @@
+     A*%%TS  SD  20051214  081010  TYJ52       REL-V5R3M0  5722-WDS
+     A*%%EC
+     A                                      DSPSIZ(24 80 *DS3)
+     A                                      INDARA
+     A          R PANTALLA01
+     A*%%TS  SD  20051214  081010  TYJ52       REL-V5R3M0  5722-WDS
+     A                                      WINDOW(3 10 13 65)
+     A                                      CF01(01)
+     A                                      CA03(03)
+     A                                      KEEP
+     A                                      OVERLAY
+     A                                      PUTOVR
+     A                                      OVRDTA
+     A                                      OVRATR
+     A                                      PRINT
+     A                                      WDWBORDER((*DSPATR RI) (*CHAR '    -
+     A                                          '))
+     A                                  1  2'CCABATCH'
+     A                                      DSPATR(HI)
+     A                                      COLOR(WHT)
+     A                                  1 57DATE
+     A                                      EDTCDE(Y)
+     A                                      DSPATR(HI)
+     A                                      COLOR(WHT)
+     A                                  2  2USER
+     A                                      DSPATR(HI)
+     A                                      COLOR(WHT)
+     A                                  2 21'Cierre Diario de Ahorros'
+     A                                      DSPATR(HI)
+     A                                      COLOR(WHT)
+     A                                  2 57TIME
+     A                                      DSPATR(HI)
+     A                                      COLOR(WHT)
+     A                                  4  7'Se va a realizar cierre de Ahorros-
+     A                                             - para el'
+     A                                  5  7'día :'
+     A            FECHOY         8Y 0O  5 13DSPATR(HI)
+     A                                      COLOR(WHT)
+     A                                      EDTWRD('    /  /  ')
+     A                                  6  7'Fecha Ayer:'
+     A            FECPRA         8Y 0O  6 19DSPATR(HI)
+     A                                      COLOR(WHT)
+     A                                      EDTWRD('    /  /  ')
+     A                                  6 30'Fecha Mañana:'
+     A            FECMAN         8Y 0O  6 44DSPATR(HI)
+     A                                      COLOR(WHT)
+     A                                      EDTWRD('    /  /  ')
+     A                                  7 29'Pasado Mañana:'
+     A            FECPAM         8Y 0O  7 44DSPATR(HI)
+     A                                      COLOR(WHT)
+     A                                      EDTWRD('    /  /  ')
+     A                                  8  7'Favor verificar que todas las inte-
+     A                                      rfaces fueron'
+     A                                  9  7'generadas por los respectivos apli-
+     A                                      cativos.'
+     A                                 10  2'F1=Aceptar'
+     A                                      COLOR(BLU)
+     A                                 10 14'Oprima F1/F3 según estime convenie-
+     A                                      nte'
+     A                                      COLOR(BLU)
+     A                                 10 58'F3=Salir'
+     A                                      COLOR(BLU)
+     A            FMENSAJE      60A  O 11  2DSPATR(HI)
+     A            PROCESO       60A  O 12  2DSPATR(HI)
+     A          R PANTALLA03
+     A*%%TS  SD  20020116  211517  TYJ01       REL-V4R2M0  5769-PW1
+     A                                      WINDOW(6 7 13 65)
+     A                                      KEEP
+     A                                      OVERLAY
+     A                                      PUTOVR
+     A                                      OVRDTA
+     A                                      OVRATR
+     A                                      PRINT
+     A                                      WDWBORDER((*DSPATR RI) (*CHAR '    -
+     A                                          '))
+     A                                  1  2'CCABATCH'
+     A                                      DSPATR(HI)
+     A                                      COLOR(WHT)
+     A                                  1 57DATE
+     A                                      EDTCDE(Y)
+     A                                      DSPATR(HI)
+     A                                      COLOR(WHT)
+     A                                  2  2USER
+     A                                      DSPATR(HI)
+     A                                      COLOR(WHT)
+     A                                  2 20'Cierre de Ahorros'
+     A                                      DSPATR(HI)
+     A                                      COLOR(WHT)
+     A                                  2 57TIME
+     A                                      DSPATR(HI)
+     A                                      COLOR(WHT)
+     A                                  6  5'Ya existe un backup de Ahorros    -
+     A                                        para esta fecha de:'
+     A                                  7  5'proceso :'
+     A            FECHOY         8Y 0O  7 16DSPATR(HI)
+     A                                      COLOR(WHT)
+     A                                      EDTWRD('    /  /  ')
+     A                                  7 27'Favor verificar.'
+     A                                  9  5'EL PROCESO SE CANCELARA, Borre el -
+     A                                      backup y reinice el mismo'
+     A                                      DSPATR(HI)
+     A                                 11  2'Intro=Aceptar'
+     A                                      COLOR(BLU)
+     A            FMENSAJE3     50A  O 12  2DSPATR(HI)
+     A          R PANTALLA07
+     A*%%TS  SD  19960725  142514  JRG         REL-V2R3M0  5738-PW1
+     A                                      ASSUME
+     A                                  1 12' '
+     A          R PANTALLA04
+     A*%%TS  SD  20051206  135921  TYJ52       REL-V5R3M0  5722-WDS
+     A                                      WINDOW(2 7 18 65)
+     A                                      KEEP
+     A                                      OVERLAY
+     A                                      PUTOVR
+     A                                      OVRDTA
+     A                                      OVRATR
+     A                                      PRINT
+     A                                      WDWBORDER((*DSPATR RI) (*CHAR '    -
+     A                                          '))
+     A                                  1  2'CCABATCH'
+     A                                      DSPATR(HI)
+     A                                      COLOR(WHT)
+     A                                  1 57DATE
+     A                                      EDTCDE(Y)
+     A                                      DSPATR(HI)
+     A                                      COLOR(WHT)
+     A                                  2  2USER
+     A                                      DSPATR(HI)
+     A                                      COLOR(WHT)
+     A                                  2 21'Cierre de Ahorros'
+     A                                      DSPATR(HI)
+     A                                      COLOR(WHT)
+     A                                  2 57TIME
+     A                                      DSPATR(HI)
+     A                                      COLOR(WHT)
+     A                                  4  2'Se requiere que los archivos sigui-
+     A                                      entes estén disponibles'
+     A                                  5  2'para el cierre diario. Favor verif-
+     A                                      icar quién está utilizando'
+     A                                  6  2'los archivos y solicitar salir del-
+     A                                       sistema INMEDIATAMENTE.'
+     A                                  8  2'Archivo'
+     A                                      DSPATR(HI)
+     A                                  8 17'Librería'
+     A                                      DSPATR(HI)
+     A                                  8 33'Estado'
+     A                                      DSPATR(HI)
+     A                                  9  2'CCAMAEAHO'
+     A            LCKARC1       13A  O  9 30DSPATR(HI)
+     A                                 10  2'CCAHISTOR'
+     A            LCKARC2       13A  O 10 30DSPATR(HI)
+     A                                 15  2'Intro=Aceptar'
+     A                                      COLOR(BLU)
+     A            FMENSAJE7     60A  O 16  2DSPATR(HI)
+     A                                 11  2'CCAMOVACE'
+     A            LCKARC3       13A  O 11 30DSPATR(HI)
+     A                                 13  2'EL PROCESO SE CANCELARA, Verifique-
+     A                                       el estado de los archivos'
+     A                                      DSPATR(HI)
+     A                                  9 17'FINCCADAT'
+     A                                 10 17'FINCCADAT'
+     A                                 11 17'FINCCADAT'
+     A          R PANTALLA05
+     A*%%TS  SD  20020116  234436  TYJ01       REL-V4R2M0  5769-PW1
+     A                                      CF01(01)
+     A                                      CA03(03)
+     A                                      KEEP
+     A                                      OVERLAY
+     A                                      PUTOVR
+     A                                      OVRDTA
+     A                                      OVRATR
+     A                                      PRINT
+     A                                      WINDOW(2 7 15 65)
+     A                                      WDWBORDER((*DSPATR RI) (*CHAR '    -
+     A                                          '))
+     A                                  1  2'CCABATCH'
+     A                                      DSPATR(HI)
+     A                                      COLOR(WHT)
+     A                                  1 57DATE
+     A                                      EDTCDE(Y)
+     A                                      DSPATR(HI)
+     A                                      COLOR(WHT)
+     A                                  2  2USER
+     A                                      DSPATR(HI)
+     A                                      COLOR(WHT)
+     A                                  2 21'Cierre de Ahorros'
+     A                                      DSPATR(HI)
+     A                                      COLOR(WHT)
+     A                                  2 57TIME
+     A                                      DSPATR(HI)
+     A                                      COLOR(WHT)
+     A                                  4  2'Existe movimiento rechazado en la -
+     A                                      validación preliminar'
+     A                                  5  2'verifique el informe CCA560R y de -
+     A                                      acuerdo a la importancia'
+     A                                  6  2'o magnitud de los mismos Continúe -
+     A                                      o Cancele el Proceso.'
+     A                                  8  2'Archivo CCAMOVIMR:'
+     A                                      DSPATR(HI)
+     A            REG            6Y 0O  8 21EDTCDE(2)
+     A                                  8 29'Registros Rechazados'
+     A                                      DSPATR(HI)
+     A                                  9  2'Archivo CCAMOERR :'
+     A                                      DSPATR(HI)
+     A            REG1           6Y 0O  9 21EDTCDE(2)
+     A                                  9 29'Registros Errados'
+     A                                      DSPATR(HI)
+     A                                 11  2'Los errados no se procesan, Los re-
+     A                                      chazados van a Cta de Rechazo '
+     A                                      DSPATR(HI)
+     A                                 13 36'F3=Cancelar Proceso'
+     A                                      COLOR(BLU)
+     A                                 13  2'F1=Continuar Proceso'
+     A                                      COLOR(BLU)
+     A            FMENSAJE5     60A  O 14  2DSPATR(HI)
+     A          R PANTALLA06
+     A*%%TS  SD  20020116  211517  TYJ01       REL-V4R2M0  5769-PW1
+     A                                      WINDOW(6 7 13 65)
+     A                                      KEEP
+     A                                      OVERLAY
+     A                                      PUTOVR
+     A                                      OVRDTA
+     A                                      OVRATR
+     A                                      PRINT
+     A                                      WDWBORDER((*DSPATR RI) (*CHAR '    -
+     A                                          '))
+     A                                  1  2'CCABATCH'
+     A                                      DSPATR(HI)
+     A                                      COLOR(WHT)
+     A                                  1 57DATE
+     A                                      EDTCDE(Y)
+     A                                      DSPATR(HI)
+     A                                      COLOR(WHT)
+     A                                  2  2USER
+     A                                      DSPATR(HI)
+     A                                      COLOR(WHT)
+     A                                  2 20'Cierre de Ahorros'
+     A                                      DSPATR(HI)
+     A                                      COLOR(WHT)
+     A                                  2 57TIME
+     A                                      DSPATR(HI)
+     A                                      COLOR(WHT)
+     A                                  6  5'El proceso ha concluido en forma s-
+     A                                      atisfactoria, verifique'
+     A                                  7  5'la existencia de los reportes.'
+     A                                  9  5'PROCESO TERMINO OK.'
+     A                                      DSPATR(HI)
+     A                                      COLOR(RED)
+     A                                      DSPATR(BL)
+     A                                 11  2'Intro=Aceptar'
+     A                                      COLOR(BLU)
+     A            FMENSAJE3     50A  O 12  2DSPATR(HI)

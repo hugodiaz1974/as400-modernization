@@ -1,0 +1,31 @@
+      *----------------------------------------------------------------
+      * Material Bajo Licencia de Taylor & Johnson                    |
+      * Copyright : TAYLOR & JOHNSON 1996, 1999, 2000, 2001, 2002     |
+      *             Todos los Derechos Reservados                     |
+      *----------------------------------------------------------------
+      * Derechos Restringidos para los usuarios, el uso, la duplica-  |
+      * cion o publicacion quedan sujetos al contrato con Taylor &    |
+      * Johnson                                                       |
+      *----------------------------------------------------------------
+     A          R REGHISTOR
+     A            CODMON         3S         TEXT('Indicativo de Moneda     ')
+     A            CODSIS         3S         TEXT('Codigo del Sistema       ')
+     A            CODPRO         3S         TEXT('Codigo de Producto       ')
+     A            AGCCTA         5S         TEXT('Codigo de Agencia        ')
+     A            CTANRO        17S         TEXT('Numero de Cuenta         ')
+     A            SECUEN         7S         TEXT('Secuencia                ')
+     A            FORIGE         8S         TEXT('Fecha Origen             ')
+     A            DEBCRE         1S         TEXT('Ind, Debito/Credito      ')
+     A            CODTRA         3S         TEXT('Codigo Transaccion       ')
+     A            IMPORT        15  2       TEXT('Importe                  ')
+     A            FVALOR         8S         TEXT('Fecha Valor              ')
+     A            NROREF        17  0       TEXT('Nro. de Referencia       ')
+     A            FECVAL         1S         TEXT('Ind. Fecha Valor            ')
+     A            TIPVAL         1S         TEXT('Ind. Tipo  Valor            ')
+     A            ESTTRN         1S         TEXT('Estado                      ')
+     A            AGCORI         5S         TEXT('Agencia Origen Tran         ')
+     A            NROPRD        17A         TEXT('Numero del Producto        ')
+     A            INFDEP        30A         TEXT('Depositante Nombre         ')
+     A            INFPRD        60A         TEXT('Informacion del Producto   ')
+     A            CODCAJ        10A         TEXT('Userid Ingreso Tran         ')
+     A            HORTRN         9P         TEXT('Hora Transaccion            ')

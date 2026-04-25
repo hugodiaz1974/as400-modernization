@@ -5,9 +5,13 @@ import LoginForm from './components/LoginForm';
 import Sidebar from './components/Sidebar';
 import ExonerationTable from './components/ExonerationTable';
 import ExonerationModal from './components/ExonerationModal';
+import BatchDashboard from './components/BatchDashboard';
 
 export default function App() {
   const { token, authUser, logout, authHeaders } = useAuth();
+  
+  // Navigation State
+  const [activeView, setActiveView] = useState('exonerations');
   
   // Dashboard State
   const [showModal, setShowModal] = useState(false);
@@ -83,70 +87,75 @@ export default function App() {
 
   return (
     <div className="flex h-screen bg-[#f3f4f6] font-sans overflow-hidden">
-      <Sidebar />
+      <Sidebar activeView={activeView} setActiveView={setActiveView} />
 
       {/* MAIN CONTENT AREA */}
       <div className="flex-1 flex flex-col h-full overflow-hidden">
         
-        <header className="h-16 bg-white shrink-0 shadow-[0_1px_3px_rgba(0,0,0,0.02)] flex items-center justify-between px-8 z-10 relative">
-          <div className="flex items-center">
-            <h2 className="text-xl font-semibold text-slate-800">Control de Exoneraciones de Transacción</h2>
-            <span className="ml-4 px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 text-xs font-semibold uppercase tracking-wide border border-blue-100">
-              Módulo Activo
-            </span>
-          </div>
-          
-          <div className="flex items-center gap-5">
-            <div className="h-8 w-px bg-slate-200"></div>
-            <div className="flex items-center gap-3">
-              <div className="h-9 w-9 rounded-full bg-gradient-to-tr from-blue-600 to-indigo-600 text-white flex items-center justify-center font-bold text-sm shadow-md">
-                {authUser?.nombre_real.charAt(0)}
+        {activeView === 'exonerations' ? (
+          <>
+            <header className="h-16 bg-white shrink-0 shadow-[0_1px_3px_rgba(0,0,0,0.02)] flex items-center justify-between px-8 z-10 relative">
+              <div className="flex items-center">
+                <h2 className="text-xl font-semibold text-slate-800">Control de Exoneraciones de Transacción</h2>
+                <span className="ml-4 px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 text-xs font-semibold uppercase tracking-wide border border-blue-100">
+                  Módulo Activo
+                </span>
               </div>
-              <div className="hidden md:block">
-                <p className="text-sm font-semibold text-slate-700 leading-tight">{authUser?.nombre_real}</p>
-                <p className="text-xs text-slate-500">{authUser?.rol}</p>
+              
+              <div className="flex items-center gap-5">
+                <div className="h-8 w-px bg-slate-200"></div>
+                <div className="flex items-center gap-3">
+                  <div className="h-9 w-9 rounded-full bg-gradient-to-tr from-blue-600 to-indigo-600 text-white flex items-center justify-center font-bold text-sm shadow-md">
+                    {authUser?.nombre_real.charAt(0)}
+                  </div>
+                  <div className="hidden md:block">
+                    <p className="text-sm font-semibold text-slate-700 leading-tight">{authUser?.nombre_real}</p>
+                    <p className="text-xs text-slate-500">{authUser?.rol}</p>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        </header>
+            </header>
 
-        <main className="flex-1 overflow-auto p-8 relative">
-          <div className="flex justify-between items-end mb-6">
-            <div className="max-w-md w-full">
-              <label className="sr-only">Buscar</label>
-              <div className="relative">
-                <Search className="absolute left-3 top-2.5 h-5 w-5 text-slate-400" />
-                <input 
-                  type="text" 
-                  placeholder="Buscar por BIN o Convenio..." 
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2.5 bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all shadow-sm text-sm"
-                />
+            <main className="flex-1 overflow-auto p-8 relative">
+              <div className="flex justify-between items-end mb-6">
+                <div className="max-w-md w-full">
+                  <label className="sr-only">Buscar</label>
+                  <div className="relative">
+                    <Search className="absolute left-3 top-2.5 h-5 w-5 text-slate-400" />
+                    <input 
+                      type="text" 
+                      placeholder="Buscar por BIN o Convenio..." 
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
+                      className="w-full pl-10 pr-4 py-2.5 bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all shadow-sm text-sm"
+                    />
+                  </div>
+                </div>
+                
+                <div className="flex gap-3">
+                  <button 
+                    onClick={() => openModal('create')}
+                    className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-xl flex items-center gap-2 font-medium transition-all shadow-md shadow-blue-600/20 text-sm"
+                  >
+                    <PlusCircle size={18} />
+                    Nueva Exoneración
+                  </button>
+                </div>
               </div>
-            </div>
-            
-            <div className="flex gap-3">
-              <button 
-                onClick={() => openModal('create')}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-xl flex items-center gap-2 font-medium transition-all shadow-md shadow-blue-600/20 text-sm"
-              >
-                <PlusCircle size={18} />
-                Nueva Exoneración
-              </button>
-            </div>
-          </div>
 
-          <ExonerationTable 
-            exonerations={exonerations}
-            params={params}
-            searchTerm={searchTerm}
-            onView={(data) => openModal('view', data)}
-            onEdit={(data) => openModal('edit', data)}
-            onDelete={handleDelete}
-          />
-
-        </main>
+              <ExonerationTable 
+                exonerations={exonerations}
+                params={params}
+                searchTerm={searchTerm}
+                onView={(data) => openModal('view', data)}
+                onEdit={(data) => openModal('edit', data)}
+                onDelete={handleDelete}
+              />
+            </main>
+          </>
+        ) : (
+          <BatchDashboard />
+        )}
       </div>
 
       {showModal && (

@@ -1,0 +1,19 @@
+             PGM        PARM(&XCODPRO &XNOMPGM &XINDEJE &XCODRET)
+             DCL        VAR(&XWCE)    TYPE(*CHAR) LEN(05)
+             DCL        VAR(&XUSRING) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&XCODPRO) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&XNOMPGM) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&XCODRET) TYPE(*CHAR) LEN(01)
+             DCL        VAR(&XINDEJE) TYPE(*CHAR) LEN(01)
+             DCL        VAR(&XCODSIS) TYPE(*CHAR) LEN(03) VALUE('011')
+
+             RTVDTAARA  DTAARA(*LDA (   1   10)) RTNVAR(&XUSRING)
+             RTVDTAARA  DTAARA(*LDA (  23    5)) RTNVAR(&XWCE)
+
+             OVRDSPF    FILE(PLTC085S) TOFILE(FINEXESDA/PLTC085S)
+             OVRDBF     FILE(PLTCTLPRO) TOFILE(FINPLTDAT/PLTCTLPRO)
+             OVRDBF     FILE(PLTFECHAS) TOFILE(SEGURIDAD/PLTFECHAS)
+             CALL       PGM(FINEXEOBJ/PLTC085) PARM(&XWCE &XCODSIS +
+                        &XCODPRO &XNOMPGM &XUSRING &XINDEJE &XCODRET)
+
+             ENDPGM

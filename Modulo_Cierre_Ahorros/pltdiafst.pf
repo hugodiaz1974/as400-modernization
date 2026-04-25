@@ -1,0 +1,65 @@
+     /*-----------------------------------------------------------------------*/
+     /* Material Bajo Licencia de Taylor & Johnson                            */
+     /* Copyright : TAYLOR & JOHNSON ® 1996, 1997, 1998, 1999, 2000, 2001,    */
+     /*                                2002, 2003, 2004, 2005                 */
+     /*             Todos los Derechos Reservados                             */
+     /*-----------------------------------------------------------------------*/
+     /* Derechos Restringidos para los usuarios, el uso, la duplicacion o     */
+     /* publicacion quedan sujetos al contrato con  TAYLOR & JOHNSON ®        */
+     /*-----------------------------------------------------------------------*/
+     A                                      UNIQUE
+     A          R REGDIAFST
+     /*-----------------------------------------------------------------------*/
+     A            CODEMP         5S         COLHDG('Codigo Empresa      ')
+     A            CODANO         4S 0       COLHDG('Ano                 ')
+     A            INDLUN         1S 0       COLHDG('Indicador Lunes     ')
+     A            INDMAR         1S 0       COLHDG('Indicador Martes    ')
+     A            INDMIE         1S 0       COLHDG('Indicador Miercoles ')
+     A            INDJUE         1S 0       COLHDG('Indicador Jueves    ')
+     A            INDVIE         1S 0       COLHDG('Indicador Viernes   ')
+     A            INDSAB         1S 0       COLHDG('Indicador Sabado    ')
+     A            INDDOM         1S 0       COLHDG('Indicador Domingo   ')
+     A            FEST01         4S 0       COLHDG('Festivo             ')
+     A            FEST02         4S 0       COLHDG('Festivo             ')
+     A            FEST03         4S 0       COLHDG('Festivo             ')
+     A            FEST04         4S 0       COLHDG('Festivo             ')
+     A            FEST05         4S 0       COLHDG('Festivo             ')
+     A            FEST06         4S 0       COLHDG('Festivo             ')
+     A            FEST07         4S 0       COLHDG('Festivo             ')
+     A            FEST08         4S 0       COLHDG('Festivo             ')
+     A            FEST09         4S 0       COLHDG('Festivo             ')
+     A            FEST10         4S 0       COLHDG('Festivo             ')
+     A            FEST11         4S 0       COLHDG('Festivo             ')
+     A            FEST12         4S 0       COLHDG('Festivo             ')
+     A            FEST13         4S 0       COLHDG('Festivo             ')
+     A            FEST14         4S 0       COLHDG('Festivo             ')
+     A            FEST15         4S 0       COLHDG('Festivo             ')
+     A            FEST16         4S 0       COLHDG('Festivo             ')
+     A            FEST17         4S 0       COLHDG('Festivo             ')
+     A            FEST18         4S 0       COLHDG('Festivo             ')
+     A            FEST19         4S 0       COLHDG('Festivo             ')
+     A            FEST20         4S 0       COLHDG('Festivo             ')
+     A            FEST21         4S 0       COLHDG('Festivo             ')
+     A            FEST22         4S 0       COLHDG('Festivo             ')
+     A            FEST23         4S 0       COLHDG('Festivo             ')
+     A            FEST24         4S 0       COLHDG('Festivo             ')
+     A            FEST25         4S 0       COLHDG('Festivo             ')
+     A            FEST26         4S 0       COLHDG('Festivo             ')
+     A            FEST27         4S 0       COLHDG('Festivo             ')
+     A            FEST28         4S 0       COLHDG('Festivo             ')
+     A            FEST29         4S 0       COLHDG('Festivo             ')
+     A            FEST30         4S 0       COLHDG('Festivo             ')
+     A            FEST31         4S 0       COLHDG('Festivo             ')
+     A            FEST32         4S 0       COLHDG('Festivo             ')
+     A            FEST33         4S 0       COLHDG('Festivo             ')
+     A            FEST34         4S 0       COLHDG('Festivo             ')
+     A            FEST35         4S 0       COLHDG('Festivo             ')
+     A            FEST36         4S 0       COLHDG('Festivo             ')
+     A            FEST37         4S 0       COLHDG('Festivo             ')
+     A            FEST38         4S 0       COLHDG('Festivo             ')
+     A            FEST39         4S 0       COLHDG('Festivo             ')
+     A            FEST40         4S 0       COLHDG('Festivo             ')
+     /*-----------------------------------------------------------------------*/
+     A          K CODEMP
+     A          K CODANO
+     /*-----------------------------------------------------------------------*/

@@ -1,0 +1,46 @@
+     /*-----------------------------------------------------------------------*/
+     /* Material Bajo Licencia de Taylor & Johnson                            */
+     /* Copyright : TAYLOR & JOHNSON ® 1996, 1997, 1998, 1999, 2000, 2001,    */
+     /*                                2002, 2003, 2004, 2005                 */
+     /*             Todos los Derechos Reservados                             */
+     /*-----------------------------------------------------------------------*/
+     /* Derechos Restringidos para los usuarios, el uso, la duplicacion o     */
+     /* publicacion quedan sujetos al contrato con  TAYLOR & JOHNSON ®        */
+     /*-----------------------------------------------------------------------*/
+     A                                      UNIQUE
+     A          R REGCUADRE
+     /*-----------------------------------------------------------------------*/
+     A            CODEMP         5S         COLHDG('Codigo Empresa      ')
+     A            FECSAL         8S 0       COLHDG('Fecha Saldo         ')
+     A            AGCCTA         5S 0       COLHDG('Codigo Oficina      ')
+     A            CODSIS         3S 0       COLHDG('Codigo Sistema      ')
+     A            CODPRO         3S 0       COLHDG('Codigo Producto     ')
+     A            CODMON         3S 0       COLHDG('Tipo de Moneda      ')
+     A            CODREG         5S 0       COLHDG('Regional            ')
+     A            CODSUC         5S 0       COLHDG('Sucursal            ')
+     A            SALANT        17S 2       COLHDG('Saldo Anterior      ')
+     A            SALDIS        17S 2       COLHDG('Valor Disponible    ')
+     A            DEPA24        17S 2       COLHDG('Saldo Canje 24      ')
+     A            DEPA48        17S 2       COLHDG('Saldo Canje 48      ')
+     A            DEPA72        17S 2       COLHDG('Saldo Canje 72      ')
+     A            SALREM        17S 2       COLHDG('Saldo Remesas       ')
+     A            SALACT        17S 2       COLHDG('Saldo Actívas       ')
+     A            SALINA        17S 2       COLHDG('Saldo Inactívas     ')
+     A            DEBDIA        17S 2       COLHDG('Débitos del día     ')
+     A            CREDIA        17S 2       COLHDG('Créditos del día    ')
+     A            SALPOS        17S 2       COLHDG('Vlr. Saldos Positiv ')
+     A            SALNEG        17S 2       COLHDG('Vlr. Saldos Negativ ')
+     A            DEBRET        17S 2       COLHDG('Débitos Rec.en Fech ')
+     A            CRERET        17S 2       COLHDG('Crédito Rec.en Fech ')
+     A            DEBRHO        17S 2       COLHDG('Débitos Rec.Hoy Fec ')
+     A            CRERHO        17S 2       COLHDG('Crédito Rec.Hoy Fec ')
+     A            NROCTA         7S 0       COLHDG('Número de Cuentas   ')
+     A            NROASO         7S 0       COLHDG('Número de Asociados ')
+     /*-----------------------------------------------------------------------*/
+     A          K CODEMP
+     A          K FECSAL
+     A          K AGCCTA
+     A          K CODSIS
+     A          K CODPRO
+     A          K CODMON
+     /*-----------------------------------------------------------------------*/

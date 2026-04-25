@@ -1,0 +1,27 @@
+      *----------------------------------------------------------------
+      * Material Bajo Licencia de Taylor & Johnson                    |
+      * Copyright : TAYLOR & JOHNSON 1996, 1999, 2000, 2001, 2002     |
+      *             Todos los Derechos Reservados                     |
+      *----------------------------------------------------------------
+      * Derechos Restringidos para los usuarios, el uso, la duplica-  |
+      * cion o publicacion quedan sujetos al contrato con Taylor &    |
+      * Johnson                                                       |
+      *----------------------------------------------------------------
+     A          R REGNOMON
+     A            AGCORI         5S 0       COLHDG('Agencia Origen Tran')
+     A            FECPRO         8S 0       COLHDG('Fecha de Proceso   ')
+     A            HORPRO         8S 0       COLHDG('Hora de Proceso    ')
+     A            CODMON         3S         TEXT('Indicativo de Moneda ')
+     A            CODSIS         3S         TEXT('Codigo del Sistema   ')
+     A            CODPRO         3S         TEXT('Codigo de Producto   ')
+     A            AGCCTA         5S 0       TEXT('Nro de Agencia       ')
+     A            CTANRO        17P 0       TEXT('Nro.Cta Ahorros      ')
+     A            CODNOV         5S 0       TEXT('Código Novedad       ')
+     A            ESTTRN         1S 0       TEXT('Estado               ')
+     A            CAMPO1       100A         TEXT('Descripción Novedad  ')
+     A*                                                                ')
+     A            CODCAJ        10A         TEXT('Codigo del Usuario     ')
+     A            NROTRN         9P 0       TEXT('Secuencia de Transaccion   ')
+     A            CNSTRN         9P 0       TEXT('Consecutivo de Transaccion ')
+     A            DATVIE       100A         TEXT('Informacion Anterior   ')
+     A            DATNUE       100A         TEXT('Informacion Nueva      ')

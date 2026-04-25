@@ -1,0 +1,58 @@
+      *----------------------------------------------------------------
+      * Material Bajo Licencia de Taylor & Johnson                    |
+      * Copyright : TAYLOR & JOHNSON 1996, 1999, 2000, 2001, 2002     |
+      *             Todos los Derechos Reservados                     |
+      *----------------------------------------------------------------
+      * Derechos Restringidos para los usuarios, el uso, la duplica-  |
+      * cion o publicacion quedan sujetos al contrato con Taylor &    |
+      * Johnson                                                       |
+      *----------------------------------------------------------------
+     A                                      UNIQUE
+     A          R REGPARGEN
+     A            CODCIA         3S 0       COLHDG('Código Compania     ')
+     A            FECLIQ         8S 0       COLHDG('Fecha Corte         ')
+     A            INDCIE         1S 0       COLHDG('Indicador de Cierre ')
+     A            TASRET        11P 7       COLHDG('Tasa Retención      ')
+     A            VLRRET        15P 2       COLHDG('Saldo Minimo Retenc.')
+     A            SALNEM        15P 2       COLHDG('Saldo Inembargable  ')
+     A            VLREFE        15P 2       COLHDG('Valor SIPLA Efectivo')
+     A            VLRCNJ        15P 2       COLHDG('Valor SIPLA Canje   ')
+     A            TRAABO         5S 0       COLHDG('Proceso. Abono.Inter')
+     A            TRARET         5S 0       COLHDG('Proceso RetFte      ')
+     A            TRACAU         5S 0       COLHDG('Proceso .Causa.Inter')
+     A            TRAINT         5S 0       COLHDG('Proceso Intereses   ')
+     A            TRARES         5S 0       COLHDG('Proceso 2%%         ')
+     A            TRAREV         5S 0       COLHDG('Proce.Rev.Causa.Retr')
+     A            TRAAJU         5S 0       COLHDG('Proce.Aju.Causa.Retr')
+     A            TRAACT         5S 0       COLHDG('Proce.Paso a Activa ')
+     A            TRAINA         5S 0       COLHDG('Proce.Paso a Inactiv')
+     A            TRA001         5S 0       COLHDG('Proce.Disponible 1  ')
+     A            TRA002         5S 0       COLHDG('Proce.Disponible 2  ')
+     A            TRA003         5S 0       COLHDG('Nro días para Inacti')
+     A            TRA004         5S 0       COLHDG('Proce.Disponible 4  ')
+     A            TRA005         5S 0       COLHDG('Código de Sistema   ')
+     A            TRARNC         5S 0       COLHDG('Rem.Neg.Comision    ')
+     A            TRARNP         5S 0       COLHDG('Rem.Neg.Portes      ')
+     A            TRARNI         5S 0       COLHDG('Rem.Neg.Iva         ')
+     A            TRARAC         5S 0       COLHDG('Rem.AlC.Comision    ')
+     A            TRARAP         5S 0       COLHDG('Rem.AlC.Portes      ')
+     A            TRARAI         5S 0       COLHDG('Rem.AlC.Iva         ')
+     A            TRARCC         5S 0       COLHDG('Rem.Con.Comision    ')
+     A            TRARCP         5S 0       COLHDG('Rem.Con.Portes      ')
+     A            TRARCI         5S 0       COLHDG('Rem.Con.Iva         ')
+     A            TRARPG         5S 0       COLHDG('Rem. Pago           ')
+     A            TRARCB         5S 0       COLHDG('Rem. Cobro          ')
+     A            VLR001        15P 2       COLHDG('Valor Disponible 1  ')
+     A            VLR002        15P 2       COLHDG('Valor Disponible 2  ')
+     A            VLR003        15P 2       COLHDG('Valor Disponible 3  ')
+     A            VLR004        15P 2       COLHDG('Valor Disponible 4  ')
+     A            VLR005        15P 2       COLHDG('Valor Disponible 5  ')
+     A            IND001         1S 0       COLHDG('Indi. Disponible 1  ')
+     A            IND002         1S 0       COLHDG('Indi. Disponible 2  ')
+     A            IND003         1S 0       COLHDG('Indi. Disponible 3  ')
+     A            IND004         1S 0       COLHDG('Indi. Disponible 4  ')
+     A            IND005         1S 0       COLHDG('Indi. Disponible 5  ')
+     A            USRACT        10A         TEXT('Usuario Ult.Actual      ')
+     A            FCHACT         8S 0       TEXT('Fecha Ult. Actualiz.    ')
+     A            HORACT         8S 0       TEXT('Hora  Ult. Actualiz.    ')
+     A          K CODCIA

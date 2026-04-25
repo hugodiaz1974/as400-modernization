@@ -1,0 +1,13 @@
+      *----------------------------------------------------------------
+      * Material Bajo Licencia de Taylor & Johnson Ltda.              |
+      * Copyright : TAYLOR & JOHNSON 1996, 1999, 2000, 2001, 2002     |
+      *             Todos los Derechos Reservados                     |
+      *----------------------------------------------------------------
+      * Derechos Restringidos para los usuarios, el uso, la duplica-  |
+      * cion o publicacion quedan sujetos al contrato con Taylor &    |
+      * Johnson                                                       |
+      *----------------------------------------------------------------
+     A          R REGREMMAE                 PFILE(PLTREMMAE)
+     A          K CODEMP
+     A          K AGCORI
+     A          S ESTCHQ                    COMP(EQ   1 )

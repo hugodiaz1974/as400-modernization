@@ -1,0 +1,94 @@
+      *---------------------------------------------------------------*
+      * Material Bajo Licencia de Taylor & Johnson                    *
+      * Copyright : TAYLOR & JOHNSON 1996 ..1999 , 2000..2005         *
+      *             Todos los Derechos Reservados                     *
+      *---------------------------------------------------------------*
+      * Derechos Restringidos para los usuarios, el uso, la duplica-  *
+      * cion o publicacion quedan sujetos al contrato con Taylor &    *
+      * Johnson                                                       *
+      *---------------------------------------------------------------*
+      * Version : 5.0   Enero del 2005                                *
+      *---------------------------------------------------------------*
+     A                                      UNIQUE
+     A          R REGTRNMON
+     A                                      TEXT('Transacciones Monetarias ')
+     A            CODEMP         5P 0       TEXT('Codigo Empresa           ')
+     A                                      COLHDG('Codigo' 'Entidad     '  )
+     A            AGCORI         5P 0       TEXT('Codigo Agencia Origen    ')
+     A                                      COLHDG('Agencia' 'Origen     '  )
+     A            CODCAJ        10A         TEXT('Codigo del Cajero        ')
+     A                                      COLHDG('Codigo' 'Empleado    '  )
+     A            CODMON         3P 0       TEXT('Tipo de Moneda           ')
+     A                                      COLHDG('Codigo' 'Moneda      '  )
+     A            NROTRN         9P 0       TEXT('Secuencia de Transaccion ')
+     A                                      COLHDG('Numero' 'Transaccion '  )
+     A            CNSTRN         9P 0       TEXT('Numero Operacion         ')
+     A                                      COLHDG('Numero' 'Operacion   '  )
+     A            CODSIS         3P 0       TEXT('Codigo del Sistema       ')
+     A                                      COLHDG('Codigo' 'Sistema     '  )
+     A            CODPRO         3P 0       TEXT('Codigo del Producto      ')
+     A                                      COLHDG('Codigo' 'Producto    '  )
+     A            CODTRN         3P 0       TEXT('Codigo de Transaccion    ')
+     A                                      COLHDG('Codigo' 'Transaccion '  )
+     A            HORTRN         9P 0       TEXT('Hora de la Transaccion     ')
+     A                                      COLHDG('Hora  ' 'Transaccion '  )
+     A            AGCDST         5P 0       TEXT('Codigo Agencia Destino     ')
+     A                                      COLHDG('Agencia' 'Destino    '  )
+     A            MEDPAG         3P 0       TEXT('Medio de Pago              ')
+     A                                      COLHDG('Medio ' 'de Pago     '  )
+     A            NROPRD        17A         TEXT('Numero del Producto        ')
+     A                                      COLHDG('Nro   ' 'Producto    '  )
+     A            INFDEP        30A         TEXT('Nombre del Cliente         ')
+     A                                      COLHDG('Nombre' 'Cliente     '  )
+     A            NROREF        17P 0       TEXT('Numero de Referencia       ')
+     A                                      COLHDG('Numero' 'Referencia  '  )
+     A            CTANRO        17P 0       TEXT('Numero de Cuenta           ')
+     A                                      COLHDG('Numero' 'Cuenta      '  )
+     A            VLRTRN        13P 2       TEXT('Valor de la Operacion      ')
+     A                                      COLHDG('Importe' 'Operacion  '  )
+     A            FECEFE         9P 0       TEXT('Fecha Efectiva             ')
+     A                                      COLHDG('Fecha ' 'Efectiva    '  )
+     A            FECPRO         9P 0       TEXT('Fecha de Proceso           ')
+     A                                      COLHDG('Fecha ' 'Proceso     '  )
+     A            TIPMOV         1P         TEXT('Tipo de Movimiento         ')
+     A                                      COLHDG('Tipo  ' 'Movimiento  '  )
+     A            ESTTRN         1P         TEXT('Estado de la Operacion     ')
+     A                                      COLHDG('Estado' 'Operacion   '  )
+     A            USRING        10A         TEXT('Usuario de Ingreso         ')
+     A                                      COLHDG('Cajero' 'Ingreso     '  )
+     A            AGCOPR         5P 0       TEXT('Codigo Agencia Operacion   ')
+     A                                      COLHDG('Agencia' 'Operacion  '  )
+     A            NROOPR        17A         TEXT('Numero de Operacion        ')
+     A                                      COLHDG('Numero' 'Operacion   '  )
+     A            INDCNJ         1S         TEXT('Indicador de Canje         ')
+     A                                      COLHDG('Flag  ' 'Canje       '  )
+     A            INFPRD        60A         TEXT('Informacion Complementaria ')
+     A                                      COLHDG('Datos ' 'Adicionales '  )
+     A            NROBNV        16P         TEXT('Numero de Interfase CORE   ')
+     A                                      COLHDG('Codigo' 'Interfase   '  )
+     A            NRONIT        17P         TEXT('Documento Identificacion   ')
+     A                                      COLHDG('Numero' 'Identificacion')
+     A            IND101         1P         TEXT('Indicativo de Llamada 101  ')
+     A                                      COLHDG('Flag  ' 'Llamada 101 '  )
+     A            INDPAT         1P         TEXT('Indicativo de PATE         ')
+     A                                      COLHDG('Flag  ' 'PA.TE.      '  )
+     A            CODOPE         3P 0       TEXT('Codigo de Operacion Interna')
+     A                                      COLHDG('Codigo' 'Interno     '  )
+     A            CODEMS         5P 0       TEXT('Codigo Interno Empresa     ')
+     A                                      COLHDG('Codigo' 'Afiliada    '  )
+     A            CODBAN         3P 0       TEXT('Codigo del Banco           ')
+     A                                      COLHDG('Codigo' 'Banco       '  )
+     A            CONSEC         3P 0       TEXT('Consecutivo Banco          ')
+     A                                      COLHDG('Cns de' 'Banco       '  )
+     A            DIS001         8P 0       TEXT('Codigo Flujo de Caja       ')
+     A                                      COLHDG('Codigo ' 'Flujo de Caja ' )
+     A            DIS002        10A         TEXT('Disponible Uso Futuro 2    ')
+     A                                      COLHDG('Uso   ' 'Version 6   '  )
+     A            CAUANU         3P 0       TEXT('Causal de Anulacion        ')
+     A                                      COLHDG('Causa ' 'Anulacion   '  )
+     A          K CODEMP
+     A          K AGCORI
+     A          K CODMON
+     A          K CODCAJ
+     A          K NROTRN
+     A          K CNSTRN

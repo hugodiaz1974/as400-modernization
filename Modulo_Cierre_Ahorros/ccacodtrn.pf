@@ -1,0 +1,32 @@
+      *----------------------------------------------------------------
+      * Material Bajo Licencia de Taylor & Johnson                    |
+      * Copyright : TAYLOR & JOHNSON 1996, 1999, 2000, 2001, 2002     |
+      *             Todos los Derechos Reservados                     |
+      *----------------------------------------------------------------
+      * Derechos Restringidos para los usuarios, el uso, la duplica-  |
+      * cion o publicacion quedan sujetos al contrato con Taylor &    |
+      * Johnson                                                       |
+      *----------------------------------------------------------------
+     A                                      UNIQUE
+     A          R REGCODTRN
+     A            CODTRA         5S 0       TEXT('Codigo de Transaccion')
+     A            NOCTRA        10A         TEXT('Sigla de Transaccion ')
+     A            NOLTRA        50A         TEXT('Nombre Largo de TRN  ')
+     A            INDHAB         1P 0       TEXT('Indicativo Habilitado 25')
+     A            INDSOB         1P 0       TEXT('Ind.Admite Sobregirar 26')
+     A            INDLOG         1P 0       TEXT('Ind.Acumula TRNxCta   27')
+     A            INDRES         2P 0       TEXT('Ind.Resumen Extracto  27')
+     A            INDNOT         1P 0       TEXT('Ind.Nota Adicional Ex 27')
+     A            DEBCRE         1P 0       TEXT('Ind.de Debito/Credito 28')
+     A            TIPVAL         3P 0       TEXT('Tipo Valor de TRN       ')
+      *                                           pltmedpag (tipmov,codmed)
+     A            FECVAL         1P 0       TEXT('Fecha Efectiva TRN    29')
+     A            CODALT         5P 0       TEXT('Codigo Alterno de TRN   ')
+     A            CODMON         5P 0       TEXT('Cod.Moneda en Plataforma')
+     A            CODSIS         5P 0       TEXT('Cod.Sistema en Plataform')
+     A            CODPRO         5P 0       TEXT('Cod.Producto en Platafor')
+     A            CODTRN         5P 0       TEXT('Cod.Transaccion en Plata')
+     A            USRACT        10A         TEXT('Usuario Ult.Actual      ')
+     A            FCHACT         8S 0       TEXT('Fecha Ult. Actualiz.    ')
+     A            HORACT         8S 0       TEXT('Hora  Ult. Actualiz.    ')
+     A          K CODTRA

@@ -1,0 +1,40 @@
+      *----------------------------------------------------------------
+      * Material Bajo Licencia de Taylor & Johnson                    |
+      * Copyright : TAYLOR & JOHNSON 1996, 1999, 2000, 2001, 2002     |
+      *             Todos los Derechos Reservados                     |
+      *----------------------------------------------------------------
+      * Derechos Restringidos para los usuarios, el uso, la duplica-  |
+      * cion o publicacion quedan sujetos al contrato con Taylor &    |
+      * Johnson                                                       |
+      *----------------------------------------------------------------
+     A          R REGMOVIM
+     A            AGCORI         5P 0       TEXT('Codigo Agencia Origen      ')
+     A            CODMON         3P 0       TEXT('Tipo de Moneda             ')
+     A            CODCAJ        10A         TEXT('Codigo del Cajero          ')
+     A            NROTRN         9P 0       TEXT('Secuencia de Transaccion   ')
+     A            CNSTRN         9P 0       TEXT('Consecutivo de Transaccion ')
+     A            CODSIS         3P 0       TEXT('Codigo del Aplicativo      ')
+     A            CODPRO         3P 0       TEXT('Codigo del Producto        ')
+     A            CODTRN         3P 0       TEXT('Clase de Transaccion       ')
+     A            HORTRN         9P 0       TEXT('Hora de la Transaccion     ')
+     A            AGCDST         5P 0       TEXT('Codigo Agencia Destino     ')
+     A            MEDPAG         3P 0       TEXT('Medio de Pago              ')
+     A            NROPRD        17A         TEXT('Numero del Producto        ')
+     A            INFDEP        30A         TEXT('Depositante Nombre         ')
+     A            NROREF        17P 0       TEXT('Numero de Referencia       ')
+     A            CTANRO        17P 0       TEXT('Numero de Cuenta           ')
+     A            VLRTRN        13P 2       TEXT('Valor de la Transaccion    ')
+     A            FECEFE         9P 0       TEXT('Fecha Efectiva             ')
+     A            FECPRO         9P 0       TEXT('Fecha de Proceso           ')
+     A            TIPMOV         1S         TEXT('Tipo de Movimiento         ')
+     A            ESTTRN         1S         TEXT('Estado de la Transaccion   ')
+     A            USRING        10A         TEXT('Usuario de Ingreso         ')
+     A            AGCOPR         5P 0       TEXT('Codigo Agencia Operacion   ')
+     A            NROOPR        11A         TEXT('Numero de la Operacion     ')
+     A            INDCNJ         1S         TEXT('Indicador de Canje         ')
+     A            INFPRD        60A         TEXT('Informacion del Producto   ')
+     A            NROBNV        16P         TEXT('Numero de Interfase BNK    ')
+     A            NRONIT        16P         TEXT('Nit del Tercer             ')
+     A            IND101         1S         TEXT('Indicativo de Llamada 101  ')
+     A            INDPAT         1S         TEXT('Indicativo de PATE         ')
+     A            CODOPE         3P 0       TEXT('Codigo de Operacion Interna')

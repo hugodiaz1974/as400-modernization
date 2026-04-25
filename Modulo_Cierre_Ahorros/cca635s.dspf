@@ -1,0 +1,62 @@
+     A*%%TS  SD  20020425  135931  TYJ10       REL-V4R2M0  5769-PW1
+     A*%%EC
+     A                                      DSPSIZ(24 80 *DS3)
+     A                                      INDARA
+     A          R PANTALLA01
+     A*%%TS  SD  20020425  135931  TYJ10       REL-V4R2M0  5769-PW1
+     A                                      WINDOW(2 7 18 55)
+     A                                      CF03
+     A                                      CF04
+     A                                      CF12
+     A                                      KEEP
+     A                                      RTNCSRLOC(&RCD &FLD &POS)
+     A                                      OVERLAY
+     A                                      PUTOVR
+     A                                      OVRDTA
+     A                                      OVRATR
+     A                                      PRINT
+     A                                      WDWBORDER((*DSPATR RI) (*CHAR '    -
+     A                                          '))
+     A            FLD           10A  H
+     A            RCD           10A  H
+     A            POS            4S 0H
+     A                                  1  2'CCA635   '
+     A                                      COLOR(WHT)
+     A                                      DSPATR(HI)
+     A            NOMEMP        22A  O  1 18DSPATR(HI)
+     A            FECSIS         8Y 0O  1 45EDTWRD('    /  /  ')
+     A                                      DSPATR(HI)
+     A                                  2  2USER
+     A                                      COLOR(WHT)
+     A                                      DSPATR(HI)
+     A                                  2 14'Sistema de Plataforma de Caja'
+     A                                      DSPATR(HI)
+     A            FECPRO         8Y 0O  2 45EDTWRD('    /  /  ')
+     A                                      DSPATR(HI)
+     A                                  3 47TIME
+     A                                      COLOR(WHT)
+     A                                      DSPATR(HI)
+     A            TECFUN        53A  O 16  2COLOR(BLU)
+     A            MENSAJE       53A  O 17  2DSPATR(HI)
+     A                                  7  2'Agencia        :'
+     A            AGCCTA         5Y 0B  7 22
+     A  01N04                               DSPATR(PR)
+     A N01N04                               DSPATR(UL)
+     A  04                                  DSPATR(RI)
+     A  40
+     AO 04                                  DSPATR(PC)
+     A                                      DSPATR(HI)
+     A  02                                  COLOR(GRN)
+     A N01N02                               COLOR(BLU)
+     A                                      EDTCDE(Z)
+     A            NOMAGC        27A  O  7 29
+     A                                  3 10'Genera Cuentas de Ahorro Activas'
+     A                                      COLOR(WHT)
+     A                                      DSPATR(HI)
+     A                                 12  2'Si la Agencia no la digitan,selecc-
+     A                                      iona automaticamente'
+     A                                 13  2'todas las agencias'
+     A          R PANTALLA02
+     A*%%TS  SD  19961015  194105  JRG         REL-V2R3M0  5738-PW1
+     A                                      ASSUME
+     A                                  4  9' '

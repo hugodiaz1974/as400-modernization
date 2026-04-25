@@ -1,0 +1,31 @@
+      *----------------------------------------------------------------
+      * Material Bajo Licencia de Taylor & Johnson                    |
+      * Copyright : TAYLOR & JOHNSON 1996, 1999, 2000, 2001, 2002     |
+      *             Todos los Derechos Reservados                     |
+      *----------------------------------------------------------------
+      * Derechos Restringidos para los usuarios, el uso, la duplica-  |
+      * cion o publicacion quedan sujetos al contrato con Taylor &    |
+      * Johnson                                                       |
+      *----------------------------------------------------------------
+     A                                      UNIQUE
+     A          R REGCODPRO
+     A            CODPRO         3P 0       TEXT('Codigo del Producto        ')
+     A            DESCRI        30A         TEXT('Nombre del Produto         ')
+     A            TIPMON         1P 0       TEXT('Tipo de Moneda      (24)   ')
+     A            CODUNI         5P 0       TEXT('Codigo de Unidad           ')
+     A            TIPLIQ         1P 0       TEXT('Tipo de Liquidacion (20)   ')
+     A            PERCAU         1P 0       TEXT('Periodos a Liquidar (21)   ')
+     A            VMLINT        15P 2       TEXT('Valor Minimo x Liq.Interes ')
+     A            VMAPER        15P 2       TEXT('Valor Minimo x Apertura    ')
+     A            VMCUEN        15P 2       TEXT('Valor Minimo de Saldo      ')
+     A            PLNINT         5P 0       TEXT('Plan de Interes Asociado   ')
+     A            ENVCOR         3P 0       TEXT('Cuando enviarse correo (22)')
+     A            FECLIQ         8P 0       TEXT('Fecha de Liquidacion Intere')
+     A            INDCIE         1P 0       TEXT('Indicador de Cierre (23)   ')
+     A            TASRET        11P 7       TEXT('Tasa Ret.Fte / Int.Ganados ')
+     A            VLRRET        15P 2       TEXT('Saldo Minimo x Ret.Fte     ')
+     A            SALNEM        15P 2       TEXT('Saldo Inembargable         ')
+     A            USRACT        10A         TEXT('Usuario Ult.Actual      ')
+     A            FCHACT         8S 0       TEXT('Fecha Ult. Actualiz.    ')
+     A            HORACT         8S 0       TEXT('Hora  Ult. Actualiz.    ')
+     A          K CODPRO

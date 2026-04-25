@@ -1,0 +1,33 @@
+     /*-----------------------------------------------------------------------*/
+     /* Material Bajo Licencia de Taylor & Johnson                            */
+     /* Copyright : TAYLOR & JOHNSON ® 1996, 1997, 1998, 1999, 2000, 2001,    */
+     /*                                2002, 2003, 2004, 2005                 */
+     /*             Todos los Derechos Reservados                             */
+     /*-----------------------------------------------------------------------*/
+     /* Derechos Restringidos para los usuarios, el uso, la duplicacion o     */
+     /* publicacion quedan sujetos al contrato con  TAYLOR & JOHNSON ®        */
+     /*-----------------------------------------------------------------------*/
+     A                                      UNIQUE
+     A          R REGCAUSAC
+     /*-----------------------------------------------------------------------*/
+     A            CODEMP         5S         COLHDG('Codigo Empresa      ')
+     A            CODMON         3S         COLHDG('Indicativo de Moned ')
+     A            CODSIS         3S         COLHDG('Codigo del Sistema  ')
+     A            CODPRO         3S         COLHDG('Codigo de Producto  ')
+     A            AGCCTA         5S 0       COLHDG('Nro de Agencia     ')
+     A            CTANRO        17P 0       COLHDG('Nro.Cta Ahorros    ')
+     A            FORIGE         8S 0       COLHDG('Fecha Origen       ')
+     A            SALACT        15P 2       COLHDG('Saldo Actual       ')
+     A            VALCAU        15P 2       COLHDG('Vlr Causado        ')
+     A            VLRRET        15P 2       COLHDG('Vlr Retención      ')
+     A            EQUEFE        11P 7       COLHDG('Equivalencia Efecti')
+     A            INDMRT         1S 0       COLHDG('Ind. Mov. Retrofech')
+     /*-----------------------------------------------------------------------*/
+     A          K CODEMP
+     A          K FORIGE
+     A          K CODMON
+     A          K CODSIS
+     A          K CODPRO
+     A          K AGCCTA
+     A          K CTANRO
+     /*-----------------------------------------------------------------------*/

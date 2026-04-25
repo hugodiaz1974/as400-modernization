@@ -334,6 +334,59 @@ app.get('/api/audit-log', authenticateToken, async (req, res) => {
     }
 });
 
+// ══════════════════════════════════════════════════════════════
+// API: BATCH MONITORING - PLTCHECKPOINT
+// ══════════════════════════════════════════════════════════════
+app.get('/api/batch/status', authenticateToken, async (req, res) => {
+    try {
+        const currentFecproRes = await pool.query("SELECT fecpro FROM pltfechas WHERE codsis = 11");
+        const currentFecpro = currentFecproRes.rows[0].fecpro;
+
+        const result = await pool.query(`
+            SELECT * FROM PLTCHECKPOINT 
+            WHERE fecpro = (SELECT MAX(fecpro) FROM PLTCHECKPOINT)
+            ORDER BY fecact ASC
+        `);
+        
+        res.json({
+            currentDate: currentFecpro,
+            checkpoints: result.rows
+        });
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
+const { spawn } = require('child_process');
+
+// ══════════════════════════════════════════════════════════════
+// API: BATCH CONTROL - START PROCESS
+// ══════════════════════════════════════════════════════════════
+app.post('/api/batch/start', authenticateToken, async (req, res) => {
+    try {
+        // Verificar si ya hay un proceso corriendo (opcional, basado en checkpoints)
+        const check = await pool.query("SELECT estado FROM PLTCHECKPOINT WHERE estado = 'INICIADO' LIMIT 1");
+        if (check.rows.length > 0) {
+            return res.status(409).json({ error: "Ya existe un proceso batch en ejecución." });
+        }
+
+        console.log(`[BATCH] Iniciando orquestador desde: ${process.cwd()}/batch-cierre-ahorros`);
+        
+        // Ejecutar el orquestador como un proceso independiente
+        const batchProcess = spawn('node', ['orchestrator.js'], {
+            cwd: './batch-cierre-ahorros', 
+            detached: true,
+            stdio: 'inherit' // Ver logs en la consola del backend
+        });
+
+        batchProcess.unref(); // Permitir que el proceso viva independientemente del servidor
+        
+        res.json({ message: "Proceso batch iniciado correctamente." });
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
 // ──────────────────────────────────────────────────────────────
 // Arranque del servidor
 // ──────────────────────────────────────────────────────────────
